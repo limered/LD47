@@ -1,6 +1,7 @@
 ﻿using SystemBase;
 using Assets.GameState.Messages;
 using UniRx;
+using UnityEngine;
 
 namespace Assets.Systems.VinylMusicSystem
 {
@@ -12,7 +13,7 @@ namespace Assets.Systems.VinylMusicSystem
             StartVinylMusic(comp);
             //MessageBroker.Default.Receive<GameMsgStart>().Subscribe(_ => StartVinylMusic(comp));
 
-            MessageBroker.Default.Receive<VinylJumpToMsg>().Subscribe(msg => JumpTo(comp, msg));
+            MessageBroker.Default.Receive<VinylJumpMsg>().Subscribe(msg => Jump(comp, msg));
 
             SystemUpdate(comp).Subscribe(UpdateMusicProgress).AddTo(comp);
         }
@@ -27,10 +28,20 @@ namespace Assets.Systems.VinylMusicSystem
             comp.VinylMusicSource.Play();
         }
 
-        private static void JumpTo(VinylMusicComponent comp, VinylJumpToMsg msg)
+        private static void Jump(VinylMusicComponent comp, VinylJumpMsg msg)
         {
-            var absolutePosition = comp.VinylMusicSource.clip.length * msg.NewPercentalPosition;
-            comp.VinylMusicSource.time = absolutePosition;
+            var old = comp.VinylMusicSource.time;
+            var currentRelativePosition = comp.VinylMusicSource.time / comp.VinylMusicSource.clip.length;
+            var newRelativePosition = currentRelativePosition - msg.JumpAmountInPercent;
+            var newAbsolutePosition = newRelativePosition * comp.VinylMusicSource.clip.length;
+
+            if (newAbsolutePosition < 0)
+            {
+                newAbsolutePosition = 0;
+            }
+
+            Debug.Log("jumped: " + (old - newAbsolutePosition));
+            comp.VinylMusicSource.time = newAbsolutePosition;
         }
     }
 }
