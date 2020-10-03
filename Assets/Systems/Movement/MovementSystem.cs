@@ -1,6 +1,5 @@
 ﻿using SystemBase;
 using UniRx;
-using UniRx.Triggers;
 
 namespace Assets.Systems.Movement
 {
@@ -9,24 +8,22 @@ namespace Assets.Systems.Movement
     {
         public override void Register(MovementComponent comp)
         {
-            comp.UpdateAsObservable()
-            .Subscribe(UpdateMutators(comp))
-            .AddTo(comp);
+            SystemUpdate(comp)
+                .Subscribe(UpdateMutators)
+                .AddTo(comp);
         }
 
-        private static System.Action<Unit> UpdateMutators(MovementComponent comp)
+        private void UpdateMutators(MovementComponent comp)
         {
-            return _ =>
-            {
-                var direction = comp.Direction.Value;
-                var speed = comp.Speed.Value;
+            var direction = comp.Direction.Value;
+            var speed = comp.Speed.Value;
 
-                foreach (var mutator in comp.MovementMutators)
-                {
-                    mutator.Mutate(comp.CanMove.Value, direction, speed, out direction, out speed);
-                }
-                comp.transform.position += direction * speed;
-            };
+            foreach (var mutator in comp.MovementMutators)
+            {
+                mutator.Mutate(comp.CanMove.Value, direction, speed, out direction, out speed);
+            }
+
+            comp.transform.position += direction * speed;
         }
     }
 }
