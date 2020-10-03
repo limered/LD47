@@ -1,11 +1,6 @@
 ﻿using SystemBase;
-using Systems.GameState.Messages;
 using Assets.GameState.Messages;
 using UniRx;
-using UniRx.Triggers;
-using UnityEngine;
-using Utils;
-using Utils.Plugins;
 
 namespace Assets.Systems.VinylMusicSystem
 {
@@ -18,6 +13,13 @@ namespace Assets.Systems.VinylMusicSystem
             //MessageBroker.Default.Receive<GameMsgStart>().Subscribe(_ => StartVinylMusic(comp));
 
             MessageBroker.Default.Receive<VinylJumpToMsg>().Subscribe(msg => JumpTo(comp, msg));
+
+            SystemUpdate(comp).Subscribe(UpdateMusicProgress).AddTo(comp);
+        }
+
+        private static void UpdateMusicProgress(VinylMusicComponent comp)
+        {
+            comp.MusicProgress.Value = comp.VinylMusicSource.time / comp.VinylMusicSource.clip.length;
         }
 
         private static void StartVinylMusic(VinylMusicComponent comp)
