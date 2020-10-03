@@ -16,13 +16,7 @@ namespace SystemBase
         where TComponent4 : GameComponent
         where TComponent5 : GameComponent
     {
-        //private
         public override Type[] ComponentsToRegister => new[] { typeof(TComponent1), typeof(TComponent2), typeof(TComponent3), typeof(TComponent4), typeof(TComponent5) };
-        public IObservable<T> WaitOn<T>()
-        {
-            return null;
-        }
-
 
         public abstract void Register(TComponent5 component);
     }
@@ -122,6 +116,54 @@ namespace SystemBase
             where TComp : GameComponent
         {
             return IoC.Game.UpdateAsObservable().Select(_ => returnedComponent);
+        }
+
+        #region Lazy Component registration
+        private Dictionary<Type, ReactiveProperty<dynamic>> _lazy = new Dictionary<Type, ReactiveProperty<dynamic>>();
+        protected void RegisterLazy<T>(T comp) where T : GameComponent
+        {
+            if (_lazy.ContainsKey(typeof(T)))
+            {
+                _lazy[typeof(T)].Value = comp;
+            }
+            else
+            {
+                _lazy[typeof(T)] = new ReactiveProperty<dynamic>(comp);
+            }
+        }
+        public AfterTheComponentIsAvailable<T> WaitOn<T>() where T : GameComponent
+        {
+            if (!_lazy.ContainsKey(typeof(T)))
+            {
+                _lazy[typeof(T)] = new ReactiveProperty<dynamic>();
+            }
+            return new AfterTheComponentIsAvailable<T>(_lazy[typeof(T)].Select(x => x as T).Take(1));
+        }
+        #endregion
+    }
+
+    public class AfterTheComponentIsAvailable<T> : IObservable<T> where T : GameComponent
+    {
+        readonly IObservable<T> _lazy;
+
+        public AfterTheComponentIsAvailable(IObservable<T> lazy)
+        {
+            _lazy = lazy;
+        }
+
+        public IDisposable Subscribe(IObserver<T> observer)
+        {
+            return _lazy.Subscribe(observer);
+        }
+
+        public IObservable<U> Then<U>(Func<T, IObservable<U>> then)
+        {
+            return _lazy.SelectMany(then);
+        }
+
+        public IDisposable ThenOnUpdate(Action<T> everyFrame, Action onCompleted = null, Action<Exception> onError = null)
+        {
+            return Then(x => x.UpdateAsObservable().Select(_ => x)).Subscribe(onNext: everyFrame, onError: onError, onCompleted: onCompleted);
         }
     }
 }
