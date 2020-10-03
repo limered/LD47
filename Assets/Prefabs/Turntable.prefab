@@ -173,6 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8982019340381828551}
+  - component: {fileID: 54790917}
   m_Layer: 0
   m_Name: Vinyl
   m_TagString: Untagged
@@ -195,6 +196,18 @@ Transform:
   m_Father: {fileID: 8982019340541363113}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &54790917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8982019340381828544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e21aac89fcb46cd95b03e0c18c9ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8982019340430161946
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8982019340541363113}
+  - component: {fileID: 54790916}
   m_Layer: 0
   m_Name: Turntable
   m_TagString: Untagged
@@ -310,6 +324,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &54790916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8982019340541363114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3043bfffdfdb045ebb3e7cd6de575cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Progress:
+    value: 0
+  Speed:
+    value: 5
 --- !u!1 &8982019340909057211
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8982019340909057210}
+  - component: {fileID: 54790918}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
@@ -341,3 +372,15 @@ Transform:
   m_Father: {fileID: 8982019340541363113}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &54790918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8982019340909057211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7802d5714c4124baebaf80cf63ba562e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
