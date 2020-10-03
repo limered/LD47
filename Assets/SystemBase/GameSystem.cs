@@ -5,6 +5,7 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using Utils;
+using Utils.Plugins;
 
 namespace SystemBase
 {
@@ -119,8 +120,8 @@ namespace SystemBase
         }
 
         #region Lazy Component registration
-        private Dictionary<Type, ReactiveProperty<dynamic>> _lazy = new Dictionary<Type, ReactiveProperty<dynamic>>();
-        protected void RegisterLazy<T>(T comp) where T : GameComponent
+        private readonly Dictionary<Type, ReactiveProperty<dynamic>> _lazy = new Dictionary<Type, ReactiveProperty<dynamic>>();
+        protected void RegisterWaitable<T>(T comp) where T : GameComponent
         {
             if (_lazy.ContainsKey(typeof(T)))
             {
@@ -137,33 +138,8 @@ namespace SystemBase
             {
                 _lazy[typeof(T)] = new ReactiveProperty<dynamic>();
             }
-            return new AfterTheComponentIsAvailable<T>(_lazy[typeof(T)].Select(x => x as T).Where(x => x != null).Take(1));
+            return new AfterTheComponentIsAvailable<T>(_lazy[typeof(T)].Select(x => x as T).WhereNotNull().First());
         }
         #endregion
-    }
-
-    public class AfterTheComponentIsAvailable<T> : IObservable<T> where T : GameComponent
-    {
-        readonly IObservable<T> _lazy;
-
-        public AfterTheComponentIsAvailable(IObservable<T> lazy)
-        {
-            _lazy = lazy;
-        }
-
-        public IDisposable Subscribe(IObserver<T> observer)
-        {
-            return _lazy.Subscribe(observer);
-        }
-
-        public IObservable<U> Then<U>(Func<T, IObservable<U>> then)
-        {
-            return _lazy.SelectMany(then);
-        }
-
-        public IDisposable ThenOnUpdate(Action<T> everyFrame)
-        {
-            return Then(x => x.UpdateAsObservable().Select(_ => x)).Subscribe(everyFrame);
-        }
     }
 }
