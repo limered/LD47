@@ -12,16 +12,8 @@ namespace Assets.Systems.VinylMusicSystem
     [GameSystem]
     public class VinylMusicSystem : GameSystem<VinylMusicComponent>
     {
-        public override void Init()
-        {
-            //could be added to IoC
-            IoC.RegisterSingleton(this);
-        }
-
         public override void Register(VinylMusicComponent comp)
         {
-            if (!comp) return;
-
             StartVinylMusic(comp);
             //MessageBroker.Default.Receive<GameMsgStart>().Subscribe(_ => StartVinylMusic(comp));
 
