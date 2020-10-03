@@ -14,7 +14,7 @@ namespace Assets.Systems.Turntable
             WaitOn<Turntable>()
                 .ThenOnUpdate(turntable => component
                     .transform
-                    .Rotate(component.Axis, Time.deltaTime * turntable.Speed.Value, Space.Self))
+                    .Rotate(component.Axis, Time.deltaTime * -turntable.Speed.Value, Space.Self))
                 .AddTo(component);
         }
 
