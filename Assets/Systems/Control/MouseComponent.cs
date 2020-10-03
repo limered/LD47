@@ -7,5 +7,6 @@ namespace Assets.Systems.Control
     {
         public Vector3ReactiveProperty MousePosition = new Vector3ReactiveProperty();
         public BoolReactiveProperty MousePressed = new BoolReactiveProperty();
+        public BoolReactiveProperty IsAboweRecord = new BoolReactiveProperty();
     }
 }

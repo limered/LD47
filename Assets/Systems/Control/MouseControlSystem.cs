@@ -21,6 +21,7 @@ namespace Assets.Systems.Control
         private static Action<Unit> CheckMousePorition(MouseComponent component)
         {
             var floorLayer = LayerMask.NameToLayer("Floor");
+            var recordLayer = LayerMask.NameToLayer("Record");
 
             return u =>
             {
@@ -37,10 +38,11 @@ namespace Assets.Systems.Control
 
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(ray, out var hit, Mathf.Infinity, 1 << floorLayer))
-                {
-                    component.MousePosition.Value = new Vector3(hit.point.x, 0, hit.point.z);
-                }
+                if (!Physics.Raycast(ray, out var hit, Mathf.Infinity, 1 << floorLayer)) return;
+                //if (!Physics.Raycast(ray, out _, Mathf.Infinity, 1 << recordLayer)) return;
+
+                component.MousePosition.Value = new Vector3(hit.point.x, hit.point.y);
+                component.transform.position = component.MousePosition.Value;
             };
         }
     }

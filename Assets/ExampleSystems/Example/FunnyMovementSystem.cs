@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using SystemBase;
+using Assets.Utils.Math;
 using ExampleSystems.Example.States;
 using UniRx;
 using UniRx.Triggers;
