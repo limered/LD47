@@ -339,7 +339,7 @@ MonoBehaviour:
   Progress:
     value: 0
   Speed:
-    value: 5
+    value: 30
 --- !u!1 &8982019340909057211
 GameObject:
   m_ObjectHideFlags: 0

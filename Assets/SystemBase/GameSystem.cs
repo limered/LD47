@@ -16,7 +16,13 @@ namespace SystemBase
         where TComponent4 : GameComponent
         where TComponent5 : GameComponent
     {
+        //private
         public override Type[] ComponentsToRegister => new[] { typeof(TComponent1), typeof(TComponent2), typeof(TComponent3), typeof(TComponent4), typeof(TComponent5) };
+        public IObservable<T> WaitOn<T>()
+        {
+            return null;
+        }
+
 
         public abstract void Register(TComponent5 component);
     }
