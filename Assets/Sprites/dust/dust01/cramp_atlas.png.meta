@@ -17,6 +17,60 @@ TextureImporter:
   - first:
       213: -9163531488412012799
     second: cramp_atlas_4
+  - first:
+      213: 9161664129693019390
+    second: cramp_atlas_0
+  - first:
+      213: 4169768219061020399
+    second: cramp_atlas_1
+  - first:
+      213: 6009558374363353826
+    second: cramp_atlas_2
+  - first:
+      213: -5537816056940640023
+    second: cramp_atlas_3
+  - first:
+      213: 1487660605050641110
+    second: cramp_atlas_4
+  - first:
+      213: -7927186735655664330
+    second: cramp_atlas_5
+  - first:
+      213: 7214798868538129792
+    second: cramp_atlas_6
+  - first:
+      213: -5309555869937258060
+    second: cramp_atlas_7
+  - first:
+      213: 4717715039510419350
+    second: cramp_atlas_8
+  - first:
+      213: 5913120742701250738
+    second: cramp_atlas_9
+  - first:
+      213: -5561263765274037087
+    second: cramp_atlas_10
+  - first:
+      213: 8506104877392113126
+    second: cramp_atlas_11
+  - first:
+      213: 9148694387370325744
+    second: cramp_atlas_12
+  - first:
+      213: -1886214883667410899
+    second: cramp_atlas_13
+  - first:
+      213: -2258586320406766021
+    second: cramp_atlas_14
+  - first:
+      213: 4053202830230374637
+    second: cramp_atlas_15
+  - first:
+      213: 8736305592609307183
+    second: cramp_atlas_16
+  - first:
+      213: 5338012193293910332
+    second: cramp_atlas_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -144,9 +198,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 122
-        height: 142
+        y: 26
+        width: 116
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c9dd80255573ce80800000000000000
-      internalID: -8159549091386369598
+      spriteID: efc6ac14cf4c42f70800000000000000
+      internalID: 9161664129693019390
       vertices: []
       indices: 
       edges: []
@@ -165,9 +219,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 122
-        y: 0
-        width: 122
-        height: 142
+        y: 21
+        width: 96
+        height: 121
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a53e8e9c9bf0ccd0800000000000000
-      internalID: -2539753539743369815
+      spriteID: fe668d45a1efdd930800000000000000
+      internalID: 4169768219061020399
       vertices: []
       indices: 
       edges: []
@@ -185,10 +239,10 @@ TextureImporter:
       name: cramp_atlas_2
       rect:
         serializedVersion: 2
-        x: 244
-        y: 0
-        width: 122
-        height: 142
+        x: 224
+        y: 35
+        width: 106
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16c00540540669a10800000000000000
-      internalID: 1915824541034089569
+      spriteID: 2e2d6e0608d366350800000000000000
+      internalID: 6009558374363353826
       vertices: []
       indices: 
       edges: []
@@ -207,9 +261,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 366
-        y: 0
+        y: 29
         width: 122
-        height: 142
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69cb20d27dd6d0240800000000000000
-      internalID: 4759581152141032598
+      spriteID: 9e8499603a9b523b0800000000000000
+      internalID: -5537816056940640023
       vertices: []
       indices: 
       edges: []
@@ -229,7 +283,7 @@ TextureImporter:
         serializedVersion: 2
         x: 488
         y: 0
-        width: 122
+        width: 104
         height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -238,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10f681969a894d080800000000000000
-      internalID: -9163531488412012799
+      spriteID: 6dad266307b35a410800000000000000
+      internalID: 1487660605050641110
       vertices: []
       indices: 
       edges: []
