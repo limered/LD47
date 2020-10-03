@@ -235,7 +235,8 @@ MonoBehaviour:
   Collider: {fileID: 0}
   TargetLocation:
     value: {x: 0, y: 0, z: 0}
-  IsOnRecord: 0
+  IsOnRecord:
+    value: 0
 --- !u!54 &9883034
 Rigidbody:
   m_ObjectHideFlags: 0
