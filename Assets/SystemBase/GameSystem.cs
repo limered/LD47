@@ -137,7 +137,7 @@ namespace SystemBase
             {
                 _lazy[typeof(T)] = new ReactiveProperty<dynamic>();
             }
-            return new AfterTheComponentIsAvailable<T>(_lazy[typeof(T)].Select(x => x as T).Take(1));
+            return new AfterTheComponentIsAvailable<T>(_lazy[typeof(T)].Select(x => x as T).Where(x => x != null).Take(1));
         }
         #endregion
     }
@@ -161,9 +161,9 @@ namespace SystemBase
             return _lazy.SelectMany(then);
         }
 
-        public IDisposable ThenOnUpdate(Action<T> everyFrame, Action onCompleted = null, Action<Exception> onError = null)
+        public IDisposable ThenOnUpdate(Action<T> everyFrame)
         {
-            return Then(x => x.UpdateAsObservable().Select(_ => x)).Subscribe(onNext: everyFrame, onError: onError, onCompleted: onCompleted);
+            return Then(x => x.UpdateAsObservable().Select(_ => x)).Subscribe(everyFrame);
         }
     }
 }

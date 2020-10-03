@@ -15,10 +15,10 @@ namespace Assets.Systems.Turntable
         public override void Register(Vinyl component)
         {
             WaitOn<Turntable>()
-                .ThenOnUpdate(turntable =>
-                    component.transform.Rotate(Vector3.forward, Time.fixedDeltaTime * turntable.Speed.Value, Space.Self))
+                .ThenOnUpdate(turntable => component.transform.Rotate(component.Axis, Time.fixedDeltaTime * turntable.Speed.Value, Space.Self))
                 .AddTo(component);
         }
+
 
         public override void Register(Arm component)
         {
