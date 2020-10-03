@@ -8,9 +8,9 @@ using UnityEngine;
 namespace Assets.Systems.NeedleCollision
 {
     [GameSystem]
-    public class NeedleCollisionSystem : GameSystem<NeedleComponent>
+    public class NeedleCollisionSystem : GameSystem<NeedleCollisionComponent>
     {
-        public override void Register(NeedleComponent comp)
+        public override void Register(NeedleCollisionComponent comp)
         {
             comp.OnTriggerEnterAsObservable().Subscribe(OnTriggerEnter).AddTo(comp);
         }

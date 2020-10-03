@@ -2,7 +2,7 @@
 
 namespace Assets.Systems.NeedleCollision
 {
-    public class NeedleComponent : GameComponent
+    public class NeedleCollisionComponent : GameComponent
     {
     }
 }
