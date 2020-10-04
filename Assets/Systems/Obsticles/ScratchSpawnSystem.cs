@@ -27,7 +27,7 @@ namespace Assets.Systems.Obsticles
 
             var x = Random.value * obj.SpawnerBox.size.x + extends.x;
             var y = Random.value * obj.SpawnerBox.size.y + extends.y;
-            var position = obj.SpawnerBox.bounds.ClosestPoint(new Vector3(x, y, 0));
+            var position = obj.SpawnerBox.bounds.ClosestPoint(new Vector3(x, y));
 
             var scratchNr = (int)(Random.value * obj.ScratchPrefabs.Count);
 
