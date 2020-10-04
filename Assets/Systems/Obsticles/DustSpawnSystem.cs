@@ -14,10 +14,10 @@ namespace Assets.Systems.Obsticles
     {
         public override void Register(DustSpawnComponent component)
         {
-            IoC.Game.GameStateContext.CurrentState
-                .Where(state => state is Running)
-                .Subscribe(_ => StartSpawning(component))
-                .AddTo(component);
+            //IoC.Game.GameStateContext.CurrentState
+            //    .Where(state => state is Running)
+            //    .Subscribe(_ => StartSpawning(component))
+            //    .AddTo(component);
 
             StartSpawning(component);
         }

@@ -1,5 +1,72 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1502868519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1502868521}
+  - component: {fileID: 1502868520}
+  - component: {fileID: 1502868522}
+  m_Layer: 0
+  m_Name: ScratchSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1502868521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502868519}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.12, y: -0.37, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 5}
+  m_Children: []
+  m_Father: {fileID: 7951491892265378789}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1502868520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502868519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4383a0717ceaf44f80e38c111bf7786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InverseSpawnPropability: 600
+  MaxScratchCount: 3
+  SpawnerBox: {fileID: 1502868522}
+  Plate: {fileID: 0}
+  ScratchPrefabs:
+  - {fileID: 5764456042027234946, guid: 1611e42f3b7f82d4f8275b1c7caf30c8, type: 3}
+  - {fileID: 5764456042027234946, guid: a770adb5069632c479168673a932959f, type: 3}
+  - {fileID: 5764456042027234946, guid: ff32b5eafd4b8a345bf2e734a32e827f, type: 3}
+  - {fileID: 5764456042027234946, guid: 7d4461d145a1e99449e982a877dd9553, type: 3}
+  CurrentScratchCount: 0
+--- !u!65 &1502868522
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502868519}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3780416, y: 1.1689816, z: 0.25}
+  m_Center: {x: 0.041812543, y: 0.19860363, z: 0}
 --- !u!1 &1721411561289665882
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +446,7 @@ Transform:
   m_GameObject: {fileID: 7951491891134072094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.7311332, y: 1.9539399, z: -6.7374887}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.11764702, y: 0.11764706, z: 20}
   m_Children:
   - {fileID: 7951491891831686052}
   - {fileID: 7951491892265378789}
@@ -470,6 +537,7 @@ Transform:
   m_Children:
   - {fileID: 7722641968880352034}
   - {fileID: 5812721721724166592}
+  - {fileID: 1502868521}
   m_Father: {fileID: 7951491891134072093}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -488,7 +556,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7951491892265378787}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -533,8 +601,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.7002571, y: 1.3560543, z: 1.3859843}
+  m_Center: {x: -0.01780218, y: -0.10681629, z: -0.9649022}
 --- !u!114 &7951491892265378785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,9 +635,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4df15b3b7c5f34449711cf360fc3f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 50
+  Acceleration: 10
   MaxSpeed: 0.25
-  MaxDistance: 5
+  MaxDistance: 2
   Target: {fileID: 7951491891831686054}
 --- !u!114 &1001295154
 MonoBehaviour:
@@ -583,8 +651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df5e82bd58339c4089f1ad4ba4d98af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationSpeed: 0
+  RotationSpeed: 120
   IsUpright: 1
-  Axis: {x: 0, y: 0, z: 0}
+  Axis: {x: 0, y: 0, z: 1}
   RecordModel: {fileID: 0}
   HamsterModel: {fileID: 4758236050570951599}
