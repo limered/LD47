@@ -5,7 +5,9 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using Assets.Utils.Math;
+using GameState.States;
 using UnityEngine.UIElements;
+using Utils;
 
 namespace Assets.Systems.HamsterCollision
 {
@@ -42,7 +44,7 @@ namespace Assets.Systems.HamsterCollision
 
         private void ResetRotation(HamsterComponent comp, Turntable.Turntable table)
         {
-            if (!comp.IsUpright) return;
+            if (!comp.IsUpright || !(IoC.Game.GameStateContext.CurrentState.Value is Running)) return;
             comp.transform
                 .Rotate(comp.Axis, Time.deltaTime * table.Speed.Value, Space.Self);
         }

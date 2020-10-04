@@ -27,7 +27,7 @@ namespace Systems
 
         private void Start()
         {
-            MessageBroker.Default.Publish(new GameMsgStart());
+            //MessageBroker.Default.Publish(new GameMsgStart());
         }
 
         public override void Init()

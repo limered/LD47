@@ -1,7 +1,9 @@
-﻿using SystemBase;
+﻿using GameState.States;
+using SystemBase;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using Utils;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -13,6 +15,7 @@ namespace Assets.Systems.Obsticles
         public override void Register(ScratchSpawnerComponent component)
         {
             SystemUpdate(component)
+                .Where(_ => IoC.Game.GameStateContext.CurrentState.Value is Running)
                 .Subscribe(TryToSpawn)
                 .AddTo(component);
         }
