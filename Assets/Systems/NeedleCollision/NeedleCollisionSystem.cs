@@ -40,6 +40,12 @@ namespace Assets.Systems.NeedleCollision
             {
                 MessageBroker.Default.Publish(new VinylJumpMsg(1f));
             }
+
+            var scratch = collider.GetComponent<ScratchComponent>();
+            if (scratch)
+            {
+                MessageBroker.Default.Publish(new VinylJumpMsg(cfg.ScratchJumpAmount));
+            }
         }
 
         private static void EndSlowEffect(NeedleCollisionConfigComponent cfg)

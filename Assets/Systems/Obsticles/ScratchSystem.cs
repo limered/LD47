@@ -1,27 +1,45 @@
-﻿using SystemBase;
+﻿using Assets.Systems.VinylMusicSystem;
+using SystemBase;
 using UniRx;
 using UnityEngine;
 
 namespace Assets.Systems.Obsticles
 {
-    [GameSystem]
-    public class ScratchSystem : GameSystem<ScratchComponent>
+    [GameSystem(typeof(VinylMusicSystem.VinylMusicSystem))]
+    public class ScratchSystem : GameSystem<ScratchComponent, ScratchConfigComponent, VinylMusicComponent>
     {
+        private ScratchConfigComponent _scrathConfig;
+
         public override void Register(ScratchComponent component)
         {
-            SystemUpdate(component)
-                .Subscribe(AnimateScratch)
+            WaitOn<VinylMusicComponent>()
+                .ThenOnUpdate(musicComponent => AnimateScratch(musicComponent, component))
                 .AddTo(component);
         }
 
-        private void AnimateScratch(ScratchComponent obj)
+        public override void Register(ScratchConfigComponent component)
         {
-            var timeModifier = Time.realtimeSinceStartup * 20;
+            RegisterWaitable(component);
+            _scrathConfig = component;
+        }
 
-            var xScaleModifier = Mathf.Sin(timeModifier)*0.1f + 1f;
-            var yScaleModifier = Mathf.Cos(timeModifier)*0.1f + 1f;
+        public override void Register(VinylMusicComponent component)
+        {
+            WaitOn<ScratchConfigComponent>()
+                .Subscribe(_ => RegisterWaitable(component))
+                .AddTo(component);
+        }
 
-            obj.transform.localScale = new Vector3(xScaleModifier, yScaleModifier, 1);
+        private void AnimateScratch(VinylMusicComponent musicComponent, ScratchComponent obj)
+        {
+            var animationSpeed = Time.realtimeSinceStartup
+                                 * musicComponent.VinylMusicSource.pitch
+                                 * _scrathConfig.MaxAnimationSpeed;
+
+            var xScaleModifier = Mathf.Sin(animationSpeed) * 0.01f + 0.1f;
+            var yScaleModifier = Mathf.Cos(animationSpeed) * 0.01f + 0.1f;
+
+            obj.transform.localScale = new Vector3(xScaleModifier, yScaleModifier, 0.1f);
         }
     }
 }
