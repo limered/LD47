@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Assets.Systems.HamsterCollision
 {
     [GameSystem]
-    public class HamsterCollisionSystem : GameSystem<HamsterComponent, Turntable.Turntable>
+    public class HamsterSystem : GameSystem<HamsterComponent, Turntable.Turntable>
     {
         public override void Register(HamsterComponent component)
         {
