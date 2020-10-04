@@ -6,6 +6,7 @@ using UniRx;
 public class HamsterAnimator : GameComponent
 {
     public StringReactiveProperty Move = new StringReactiveProperty();
+    public StringReactiveProperty Clean = new StringReactiveProperty();
 }
 
 public static class Hamster
@@ -20,5 +21,11 @@ public static class Hamster
         public const string Right = "rechts_hamster";
         public const string RightUp = "rechts_hoch_hamster";
         public const string RightDown = "rechts_runter_hamster";
+    }
+
+    public static class Clean
+    {
+        public const string Broom = "broom_clean";
+        public const string Hammer = "hammer_clean";
     }
 }

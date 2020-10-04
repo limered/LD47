@@ -44,6 +44,7 @@ namespace Assets.Systems.HamsterCollision
 
         private void MoveDustToAnotherPlace(DustComponent dust)
         {
+            MessageBroker.Default.Publish(new CleanUpEvent());
             dust.Jump.Execute();
         }
 

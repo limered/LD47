@@ -10,7 +10,5 @@ namespace Assets.Systems.HamsterCollision
         public Vector3 Axis;
         public GameObject RecordModel;
         public GameObject HamsterModel;
-        public GameObject BroomModel;
-        public GameObject HammerModel;
     }
 }
