@@ -32,7 +32,8 @@ namespace Assets.Systems.Points
 
             var passedTimeDiff = actualPassedTime - passedMusicTime;
             var passedTimeDiffTimeSpan = TimeSpan.FromSeconds(passedTimeDiff);
-            var formattedTimeDiff = $"{passedTimeDiffTimeSpan.Minutes:D2}:{passedTimeDiffTimeSpan.Seconds:D2}:{passedTimeDiffTimeSpan.Milliseconds/100}";
+            var formattedTimeDiff =
+                $"{passedTimeDiffTimeSpan.Minutes:D2}:{passedTimeDiffTimeSpan.Seconds:D2}:{(passedTimeDiffTimeSpan.Milliseconds / 100)}00";
 
             var textComponent = comp.GetComponent<Text>();
             textComponent.text = $"Lost time: {formattedTimeDiff}m";
