@@ -8,7 +8,14 @@ namespace Assets.Systems.Turntable
     [GameSystem]
     public class TurntableSystem : GameSystem<Turntable, Vinyl, Arm, VinylMusicComponent>
     {
-        public override void Register(Turntable component) => RegisterWaitable(component);
+        public override void Register(Turntable component)
+        {
+            RegisterWaitable(component);
+
+            WaitOn<VinylMusicComponent>()
+                .ThenOnUpdate(vinylMusic => ChangeRotationSpeed(vinylMusic, component))
+                .AddTo(component);
+        }
 
         public override void Register(Vinyl component)
         {
@@ -17,6 +24,11 @@ namespace Assets.Systems.Turntable
                     .transform
                     .Rotate(component.Axis, Time.deltaTime * -turntable.Speed.Value, Space.Self))
                 .AddTo(component);
+        }
+
+        private void ChangeRotationSpeed(VinylMusicComponent vinylMusic, Turntable component)
+        {
+            component.Speed.Value = component.MaxSpeed * vinylMusic.VinylMusicSource.pitch;
         }
 
         public override void Register(Arm component)

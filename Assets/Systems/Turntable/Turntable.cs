@@ -7,6 +7,7 @@ namespace Assets.Systems.Turntable
     public class Turntable : GameComponent
     {
         public FloatReactiveProperty Speed = new FloatReactiveProperty(30);
+        public float MaxSpeed = 120;
     }
 }
 

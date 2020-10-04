@@ -18,7 +18,7 @@ namespace Assets.Systems.HamsterCollision
                 .AddTo(component);
 
             WaitOn<Turntable.Turntable>()
-                .ThenOnUpdate(_ => ResetRotation(component))
+                .ThenOnUpdate(tTable => ResetRotation(component, tTable))
                 .AddTo(component);
 
             SystemUpdate(component)
@@ -26,11 +26,11 @@ namespace Assets.Systems.HamsterCollision
                 .AddTo(component);
         }
 
-        private void ResetRotation(HamsterComponent comp)
+        private void ResetRotation(HamsterComponent comp, Turntable.Turntable table)
         {
             if (!comp.IsUpright) return;
             comp.transform
-                .Rotate(comp.Axis, Time.deltaTime * comp.RotationSpeed, Space.Self);
+                .Rotate(comp.Axis, Time.deltaTime * table.Speed.Value, Space.Self);
         }
 
         private void Collider(Collider other)
