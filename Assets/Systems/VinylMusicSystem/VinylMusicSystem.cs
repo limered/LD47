@@ -1,5 +1,6 @@
 ﻿using SystemBase;
 using Assets.GameState.Messages;
+using Assets.Systems.VinylMusicSystem.Events;
 using GameState.States;
 using UniRx;
 using Utils;
@@ -41,6 +42,11 @@ namespace Assets.Systems.VinylMusicSystem
         private static void UpdateMusicProgress(VinylMusicComponent comp)
         {
             comp.MusicProgress.Value = comp.VinylMusicSource.time / comp.VinylMusicSource.clip.length;
+
+            if (comp.VinylMusicSource.time >= comp.VinylMusicSource.clip.length)
+            {
+                MessageBroker.Default.Publish(new MusicEndedEvent());
+            }
         }
 
         private static void StartVinylMusic(VinylMusicComponent comp)
