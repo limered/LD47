@@ -9,6 +9,7 @@ public class ToolSystem : GameSystem<ToolComponent>
     {
         MessageBroker.Default.Receive<CleanUpEvent>().Subscribe(_ => AnimateCleaning(component));
 
+        //TODO select tool
         SelectTool(component, CurrentTool.Broom);
     }
 
@@ -16,10 +17,8 @@ public class ToolSystem : GameSystem<ToolComponent>
     {
         if(comp.CurrentTool == CurrentTool.Broom)
         {
-            Debug.Log("YOU SHOULD CLEAN WITH BROOM");
             var animator = comp.BroomModel.GetComponent<Animator>();
             animator.runtimeAnimatorController.animationClips[1].wrapMode = WrapMode.Once;
-            Debug.Log("second " + animator.runtimeAnimatorController.animationClips[1].name);
 
             animator.Play(Hamster.Clean.Broom);
         }
