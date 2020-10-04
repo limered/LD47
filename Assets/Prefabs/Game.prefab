@@ -246,6 +246,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4798437895860691432}
     m_Modifications:
+    - target: {fileID: 1114972972, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: InverseDustSpawnPropability
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394704885666105615, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: Record
+      value: 
+      objectReference: {fileID: 4798437895871941226}
+    - target: {fileID: 1394704885666105615, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: RecordModel
+      value: 
+      objectReference: {fileID: 4798437895871941226}
     - target: {fileID: 5894514150342845364, guid: 250164240bcbf034abbecc481512118d, type: 3}
       propertyPath: m_Name
       value: RecordPlayer
@@ -299,6 +311,11 @@ PrefabInstance:
 --- !u!4 &4798437894812306596 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5894514150342845365, guid: 250164240bcbf034abbecc481512118d, type: 3}
+  m_PrefabInstance: {fileID: 1394704885516955409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4798437895871941226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5894514151430366587, guid: 250164240bcbf034abbecc481512118d, type: 3}
   m_PrefabInstance: {fileID: 1394704885516955409}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6154141539558747962

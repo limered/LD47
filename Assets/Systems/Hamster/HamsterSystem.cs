@@ -46,5 +46,29 @@ namespace Assets.Systems.HamsterCollision
         {
             RegisterWaitable(component);
         }
+
+        private void SetAnimationByPosition(HamsterComponent comp)
+        {
+            var animator = comp.HamsterModel.GetComponent<Animator>();
+
+            var newPosition = comp.RecordModel.transform.position;
+            var oldPosition = comp.transform.position;
+            if (newPosition.x <= oldPosition.x && newPosition.y >= oldPosition.y)
+            {
+                animator.Play(Hamster.Move.Up);
+            }
+            else if (newPosition.x >= oldPosition.x && newPosition.y >= oldPosition.y)
+            {
+                animator.Play(Hamster.Move.Down);
+            }
+            else if (newPosition.x >= oldPosition.x && newPosition.y <= oldPosition.y)
+            {
+                animator.Play(Hamster.Move.Left);
+            }
+            else if (newPosition.x >= oldPosition.x && newPosition.y >= oldPosition.y)
+            {
+                animator.Play(Hamster.Move.Right);
+            }
+        }
     }
 }

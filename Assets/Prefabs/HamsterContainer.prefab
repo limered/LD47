@@ -536,3 +536,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df5e82bd58339c4089f1ad4ba4d98af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RotationSpeed: 0
+  IsUpright: 1
+  Axis: {x: 0, y: 0, z: 0}
+  RecordModel: {fileID: 0}
+  HamsterModel: {fileID: 4758236050570951599}
+  BroomModel: {fileID: 4532147133730358360}
+  HammerModel: {fileID: 1721411561289665882}
