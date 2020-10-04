@@ -55,17 +55,13 @@ namespace SystemBase
         public abstract void Register(TComponent2 component);
     }
 
-    public abstract class GameSystem<TComponent> : IGameSystem where TComponent : GameComponent
+    public abstract class GameSystem<TComponent> : GameSystem where TComponent : GameComponent
     {
         private Dictionary<Type, Action<GameComponent>> _registerMethods;
 
-        public virtual Type[] ComponentsToRegister => new[] { typeof(TComponent) };
+        public override Type[] ComponentsToRegister => new[] { typeof(TComponent) };
 
-        public virtual void Init()
-        {
-        }
-
-        public void RegisterComponent(GameComponent component)
+        public override void RegisterComponent(GameComponent component)
         {
             if (_registerMethods == null)
             {
@@ -85,6 +81,19 @@ namespace SystemBase
         }
 
         public abstract void Register(TComponent component);
+    }
+
+    public abstract class GameSystem : IGameSystem
+    {
+        public virtual Type[] ComponentsToRegister { get; }
+
+        public virtual void Init()
+        {
+        }
+
+        public virtual void RegisterComponent(GameComponent component)
+        {
+        }
 
         public IObservable<float> SystemUpdate()
         {
@@ -120,7 +129,23 @@ namespace SystemBase
         }
 
         #region Lazy Component registration
+
         private readonly Dictionary<Type, ReactiveProperty<dynamic>> _lazy = new Dictionary<Type, ReactiveProperty<dynamic>>();
+
+        protected GameSystem()
+        {
+            ComponentsToRegister = new Type[0];
+        }
+
+        public AfterTheComponentIsAvailable<T> WaitOn<T>() where T : GameComponent
+        {
+            if (!_lazy.ContainsKey(typeof(T)))
+            {
+                _lazy[typeof(T)] = new ReactiveProperty<dynamic>();
+            }
+            return new AfterTheComponentIsAvailable<T>(_lazy[typeof(T)].Select(x => x as T).WhereNotNull().First());
+        }
+
         protected void RegisterWaitable<T>(T comp) where T : GameComponent
         {
             if (_lazy.ContainsKey(typeof(T)))
@@ -132,14 +157,7 @@ namespace SystemBase
                 _lazy[typeof(T)] = new ReactiveProperty<dynamic>(comp);
             }
         }
-        public AfterTheComponentIsAvailable<T> WaitOn<T>() where T : GameComponent
-        {
-            if (!_lazy.ContainsKey(typeof(T)))
-            {
-                _lazy[typeof(T)] = new ReactiveProperty<dynamic>();
-            }
-            return new AfterTheComponentIsAvailable<T>(_lazy[typeof(T)].Select(x => x as T).WhereNotNull().First());
-        }
-        #endregion
+
+        #endregion Lazy Component registration
     }
 }
