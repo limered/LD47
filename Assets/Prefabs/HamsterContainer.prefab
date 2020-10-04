@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25849eac9cb94f34798472eabaaa2d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentTool: 0
+  CurrentTool: 2
   BroomModel: {fileID: 4532147133730358360}
   HammerModel: {fileID: 1721411561289665882}
 --- !u!1 &7951491891134072094
