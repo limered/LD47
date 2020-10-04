@@ -1,9 +1,11 @@
 ﻿using SystemBase;
 using Assets.Systems.Obsticles;
+using Assets.Systems.Tools.Actions;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using Assets.Utils.Math;
+using UnityEngine.UIElements;
 
 namespace Assets.Systems.HamsterCollision
 {
@@ -14,7 +16,7 @@ namespace Assets.Systems.HamsterCollision
         {
             component
                 .OnTriggerEnterAsObservable()
-                .Subscribe(Collider)
+                .Subscribe(coll => Collider(coll, component))
                 .AddTo(component);
 
             WaitOn<Turntable.Turntable>()
@@ -24,6 +26,18 @@ namespace Assets.Systems.HamsterCollision
             SystemUpdate(component)
                 .Subscribe(SetAnimationByPosition)
                 .AddTo(component);
+
+            SystemUpdate(component)
+                .Where(_ => Input.GetMouseButtonDown((int)MouseButton.RightMouse))
+                .Subscribe(CheckForToolSwitch)
+                .AddTo(component);
+        }
+
+        private void CheckForToolSwitch(HamsterComponent obj)
+        {
+            var tools = obj.GetComponentInChildren<ToolComponent>();
+            var nxtTool = tools.CurrentTool == CurrentTool.Broom ? CurrentTool.Hammer : CurrentTool.Broom;
+            MessageBroker.Default.Publish(new SelectToolAction{ToolToSelect = nxtTool});
         }
 
         private void ResetRotation(HamsterComponent comp, Turntable.Turntable table)
@@ -33,23 +47,31 @@ namespace Assets.Systems.HamsterCollision
                 .Rotate(comp.Axis, Time.deltaTime * table.Speed.Value, Space.Self);
         }
 
-        private void Collider(Collider other)
+        private void Collider(Collider other, HamsterComponent hamster)
         {
-            var dust = other.GetComponent<DustComponent>();
-            if (dust)
-            {
-                MoveDustToAnotherPlace(dust);
-            }
+            var tool = hamster.GetComponentInChildren<ToolComponent>();
 
-            var scratch = other.GetComponent<ScratchComponent>();
-            if (scratch)
+            if (tool.CurrentTool == CurrentTool.Broom)
             {
-                DeleteScratch(scratch);
+                var dust = other.GetComponent<DustComponent>();
+                if (dust)
+                {
+                    MoveDustToAnotherPlace(dust);
+                }
+            }
+            else if (tool.CurrentTool == CurrentTool.Hammer)
+            {
+                var scratch = other.GetComponent<ScratchComponent>();
+                if (scratch)
+                {
+                    DeleteScratch(scratch);
+                }
             }
         }
 
         private void DeleteScratch(ScratchComponent scratch)
         {
+            MessageBroker.Default.Publish(new CleanUpEvent());
             scratch.Remove.Execute();
         }
 

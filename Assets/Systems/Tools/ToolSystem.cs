@@ -1,4 +1,5 @@
 ﻿using SystemBase;
+using Assets.Systems.Tools.Actions;
 using UniRx;
 using UnityEngine;
 
@@ -7,10 +8,18 @@ public class ToolSystem : GameSystem<ToolComponent>
 {
     public override void Register(ToolComponent component)
     {
-        MessageBroker.Default.Receive<CleanUpEvent>().Subscribe(_ => AnimateCleaning(component));
+        MessageBroker.Default.Receive<CleanUpEvent>()
+            .Subscribe(_ => AnimateCleaning(component))
+            .AddTo(component);
 
-        //TODO select tool
-        SelectTool(component, CurrentTool.Broom);
+        MessageBroker.Default.Receive<SelectToolAction>()
+            .Subscribe(newTool => OnSelectTool(component, newTool))
+            .AddTo(component);
+    }
+
+    private void OnSelectTool(ToolComponent component, SelectToolAction obj)
+    {
+        SelectTool(component, obj.ToolToSelect);
     }
 
     private void AnimateCleaning(ToolComponent comp)
