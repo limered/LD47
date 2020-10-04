@@ -71,6 +71,8 @@ namespace Assets.Systems.Obsticles
 
         private void OnDustJump(DustComponent obj)
         {
+            if (!obj.IsOnRecord.Value) return;
+
             obj.transform.parent = null;
             obj.IsOnRecord.Value = false;
 
