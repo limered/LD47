@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Assets.Systems.HamsterCollision
 {
     [GameSystem]
-    public class HamsterCollisionSystem : GameSystem<HamsterComponent>
+    public class HamsterCollisionSystem : GameSystem<HamsterComponent, Turntable.Turntable>
     {
         public override void Register(HamsterComponent component)
         {
@@ -15,6 +15,17 @@ namespace Assets.Systems.HamsterCollision
                 .OnTriggerEnterAsObservable()
                 .Subscribe(Collider)
                 .AddTo(component);
+
+            WaitOn<Turntable.Turntable>()
+                .ThenOnUpdate(_ => ResetRotation(component))
+                .AddTo(component);
+        }
+
+        private void ResetRotation(HamsterComponent comp)
+        {
+            if (!comp.IsUpright) return;
+            comp.transform
+                .Rotate(comp.Axis, Time.deltaTime * comp.RotationSpeed, Space.Self);
         }
 
         private void Collider(Collider other)
@@ -29,6 +40,11 @@ namespace Assets.Systems.HamsterCollision
         private void MoveDustToAnotherPlace(DustComponent dust)
         {
             dust.Jump.Execute();
+        }
+
+        public override void Register(Turntable.Turntable component)
+        {
+            RegisterWaitable(component);
         }
     }
 }
