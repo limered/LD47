@@ -194,7 +194,7 @@ MonoBehaviour:
   - {fileID: 2509728584924476595, guid: ac5d8a42a6c6b5245a0d2d7acc0f5924, type: 3}
   - {fileID: 6342341698380181153, guid: b5bd968c6d276764fb01a296750bec95, type: 3}
   - {fileID: 1675654902605633505, guid: cee2c77becc2628428c8888d8472b45a, type: 3}
-  InverseDustSpawnPropability: 50
+  InverseDustSpawnPropability: 100
 --- !u!1 &1502868519
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,12 +240,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InverseSpawnPropability: 1000
-  MaxScratchCount: 2
+  MaxScratchCount: 1
   SpawnerBox: {fileID: 1502868522}
   Plate: {fileID: 4798437894692103044}
   ScratchPrefabs:
   - {fileID: 5764456042027234946, guid: 1611e42f3b7f82d4f8275b1c7caf30c8, type: 3}
-  CurrentScratches: []
+  - {fileID: 5764456042027234946, guid: a770adb5069632c479168673a932959f, type: 3}
+  - {fileID: 5764456042027234946, guid: ff32b5eafd4b8a345bf2e734a32e827f, type: 3}
+  - {fileID: 5764456042027234946, guid: 7d4461d145a1e99449e982a877dd9553, type: 3}
+  CurrentScratchCount: 0
 --- !u!65 &1502868522
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -842,6 +845,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: HamsterContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 7951491892265378784, guid: 49f5ef1cae4a1e04497844e35388dc8e, type: 3}
+      propertyPath: m_Size.x
+      value: 1.7002571
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951491892265378784, guid: 49f5ef1cae4a1e04497844e35388dc8e, type: 3}
+      propertyPath: m_Size.y
+      value: 1.3560543
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951491892265378784, guid: 49f5ef1cae4a1e04497844e35388dc8e, type: 3}
+      propertyPath: m_Size.z
+      value: 1.3859843
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951491892265378784, guid: 49f5ef1cae4a1e04497844e35388dc8e, type: 3}
+      propertyPath: m_Center.x
+      value: -0.01780218
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951491892265378784, guid: 49f5ef1cae4a1e04497844e35388dc8e, type: 3}
+      propertyPath: m_Center.y
+      value: -0.10681629
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951491892265378784, guid: 49f5ef1cae4a1e04497844e35388dc8e, type: 3}
+      propertyPath: m_Center.z
+      value: -0.9649022
+      objectReference: {fileID: 0}
     - target: {fileID: 7951491892265378786, guid: 49f5ef1cae4a1e04497844e35388dc8e, type: 3}
       propertyPath: MaxDistance
       value: 2
@@ -853,6 +880,10 @@ PrefabInstance:
     - target: {fileID: 7951491892265378786, guid: 49f5ef1cae4a1e04497844e35388dc8e, type: 3}
       propertyPath: MaxSpeed
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951491892265378791, guid: 49f5ef1cae4a1e04497844e35388dc8e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f5ef1cae4a1e04497844e35388dc8e, type: 3}

@@ -58,7 +58,6 @@ namespace Assets.Systems.VinylMusicSystem
                 newAbsolutePosition = 0;
             }
 
-            Debug.Log("jumped: " + (old - newAbsolutePosition));
             comp.VinylMusicSource.time = newAbsolutePosition;
         }
     }

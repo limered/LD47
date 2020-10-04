@@ -40,6 +40,17 @@ namespace Assets.Systems.HamsterCollision
             {
                 MoveDustToAnotherPlace(dust);
             }
+
+            var scratch = other.GetComponent<ScratchComponent>();
+            if (scratch)
+            {
+                DeleteScratch(scratch);
+            }
+        }
+
+        private void DeleteScratch(ScratchComponent scratch)
+        {
+            scratch.Remove.Execute();
         }
 
         private void MoveDustToAnotherPlace(DustComponent dust)

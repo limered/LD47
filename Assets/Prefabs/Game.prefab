@@ -467,6 +467,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4798437895860691432}
     m_Modifications:
+    - target: {fileID: 1114972972, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: InverseDustSpawnPropability
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 5894514150342845364, guid: 250164240bcbf034abbecc481512118d, type: 3}
       propertyPath: m_Name
       value: RecordPlayer
@@ -533,6 +537,14 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1467705706418740766, guid: dfdb450507d0c7a4dbec1cd7a8ee908d, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467705706418740766, guid: dfdb450507d0c7a4dbec1cd7a8ee908d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a698c7bb76871f44835f011155d71fa, type: 3}
     - target: {fileID: 2297724495016174355, guid: dfdb450507d0c7a4dbec1cd7a8ee908d, type: 3}
       propertyPath: m_Name
       value: Music

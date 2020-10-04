@@ -1,5 +1,6 @@
 ﻿using SystemBase;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -21,7 +22,7 @@ namespace Assets.Systems.Obsticles
             var spawnRate = obj.InverseSpawnPropability;
             var shouldSpawn = (int)(Random.value * spawnRate) % spawnRate == 0;
 
-            if (!shouldSpawn || obj.CurrentScratches.Count >= obj.MaxScratchCount) return;
+            if (!shouldSpawn || obj.CurrentScratchCount >= obj.MaxScratchCount) return;
 
             var extends = obj.transform.position - obj.SpawnerBox.size * 0.5f;
 
@@ -32,7 +33,10 @@ namespace Assets.Systems.Obsticles
             var scratchNr = (int)(Random.value * obj.ScratchPrefabs.Count);
 
             var scratch = Object.Instantiate(obj.ScratchPrefabs[scratchNr], position, Quaternion.identity, obj.Plate.transform);
-            obj.CurrentScratches.Add(scratch.gameObject);
+            obj.CurrentScratchCount++;
+
+            scratch.gameObject.OnDestroyAsObservable()
+                .Subscribe(_ => obj.CurrentScratchCount--);
         }
     }
 }

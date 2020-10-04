@@ -1,7 +1,10 @@
-﻿using Assets.Systems.VinylMusicSystem;
+﻿using System;
+using Assets.Systems.VinylMusicSystem;
 using SystemBase;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Assets.Systems.Obsticles
 {
@@ -15,6 +18,17 @@ namespace Assets.Systems.Obsticles
             WaitOn<VinylMusicComponent>()
                 .ThenOnUpdate(musicComponent => AnimateScratch(musicComponent, component))
                 .AddTo(component);
+
+            component.Remove.Subscribe(_ => OnRemove(component)).AddTo(component);
+        }
+
+        private void OnRemove(ScratchComponent obj)
+        {
+            obj.StartFadeout();
+
+            Observable
+                .Timer(TimeSpan.FromMilliseconds(300))
+                .Subscribe(_ => Object.Destroy(obj.gameObject));
         }
 
         public override void Register(ScratchConfigComponent component)

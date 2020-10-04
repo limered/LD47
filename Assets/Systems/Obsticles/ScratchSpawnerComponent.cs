@@ -12,6 +12,6 @@ namespace Assets.Systems.Obsticles
         public BoxCollider SpawnerBox;
         public GameComponent Plate;
         public List<GameComponent> ScratchPrefabs;
-        public List<GameObject> CurrentScratches = new List<GameObject>();
+        public int CurrentScratchCount;
     }
 }
