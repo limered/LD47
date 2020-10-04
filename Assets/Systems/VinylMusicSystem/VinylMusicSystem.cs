@@ -21,7 +21,18 @@ namespace Assets.Systems.VinylMusicSystem
 
         private void ChangeSpeed(VinylMusicComponent comp, NeedleChangeSpeedMsg msg)
         {
-            comp.VinylMusicSource.pitch += msg.SpeedChangeAmount;
+            var newPitch = comp.VinylMusicSource.pitch + msg.SpeedChangeAmount;
+
+            if (newPitch < 0)
+            {
+                newPitch = 0.1f;
+            }
+            else if (newPitch > 1)
+            {
+                newPitch = 1;
+            }
+
+            comp.VinylMusicSource.pitch = newPitch;
         }
 
         private static void UpdateMusicProgress(VinylMusicComponent comp)
