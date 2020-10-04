@@ -25,6 +25,11 @@ namespace Systems
             MessageBroker.Default.Publish(new GameMsgFinishedLoading());
         }
 
+        private void Start()
+        {
+            MessageBroker.Default.Publish(new GameMsgStart());
+        }
+
         public override void Init()
         {
             base.Init();

@@ -1,8 +1,8 @@
 ﻿using SystemBase;
-using Systems.GameState.Messages;
 using Assets.GameState.Messages;
+using GameState.States;
 using UniRx;
-using UnityEngine;
+using Utils;
 
 namespace Assets.Systems.VinylMusicSystem
 {
@@ -11,9 +11,11 @@ namespace Assets.Systems.VinylMusicSystem
     {
         public override void Register(VinylMusicComponent comp)
         {
-            MessageBroker.Default.Publish(new GameMsgStart());
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is Running)
+                .Subscribe(_ => StartVinylMusic(comp))
+                .AddTo(comp);
 
-            MessageBroker.Default.Receive<GameMsgStart>().Subscribe(_ => StartVinylMusic(comp));
             MessageBroker.Default.Receive<VinylJumpMsg>().Subscribe(msg => Jump(comp, msg));
             MessageBroker.Default.Receive<NeedleChangeSpeedMsg>().Subscribe(msg => ChangeSpeed(comp, msg));
 
@@ -48,7 +50,6 @@ namespace Assets.Systems.VinylMusicSystem
 
         private static void Jump(VinylMusicComponent comp, VinylJumpMsg msg)
         {
-            var old = comp.VinylMusicSource.time;
             var currentRelativePosition = comp.VinylMusicSource.time / comp.VinylMusicSource.clip.length;
             var newRelativePosition = currentRelativePosition - msg.JumpAmountInPercent;
             var newAbsolutePosition = newRelativePosition * comp.VinylMusicSource.clip.length;

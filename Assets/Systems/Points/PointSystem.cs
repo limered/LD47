@@ -1,9 +1,10 @@
 ﻿using System;
 using SystemBase;
-using Systems.GameState.Messages;
 using Assets.Systems.VinylMusicSystem;
+using GameState.States;
 using UniRx;
 using UnityEngine.UI;
+using Utils;
 
 namespace Assets.Systems.Points
 {
@@ -14,11 +15,24 @@ namespace Assets.Systems.Points
 
         public override void Register(PointComponent component)
         {
-            MessageBroker.Default.Receive<GameMsgStart>().Subscribe(SetStartTime).AddTo(component);
-            WaitOn<VinylMusicComponent>().ThenOnUpdate(vinylMusicComponent => UpdatePoints(component, vinylMusicComponent)).AddTo(component);
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is Running)
+                .Subscribe(_ => SetStartTime())
+                .AddTo(component);
+
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is Running)
+                .Subscribe(_ => RegisterUpdatePoints(component))
+                .AddTo(component);
         }
 
-        private void SetStartTime(GameMsgStart obj)
+        private void RegisterUpdatePoints(PointComponent component)
+        {
+            WaitOn<VinylMusicComponent>()
+                .ThenOnUpdate(vinylMusicComponent => UpdatePoints(component, vinylMusicComponent)).AddTo(component);
+        }
+
+        private void SetStartTime()
         {
             _startTime = DateTime.Now;
         }

@@ -1,5 +1,4 @@
 ﻿using GameState.States;
-using System.Linq;
 using SystemBase;
 using UniRx;
 using UnityEngine;
@@ -14,12 +13,10 @@ namespace Assets.Systems.Obsticles
     {
         public override void Register(DustSpawnComponent component)
         {
-            //IoC.Game.GameStateContext.CurrentState
-            //    .Where(state => state is Running)
-            //    .Subscribe(_ => StartSpawning(component))
-            //    .AddTo(component);
-
-            StartSpawning(component);
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is Running)
+                .Subscribe(_ => StartSpawning(component))
+                .AddTo(component);
         }
 
         private void StartSpawning(DustSpawnComponent component)
