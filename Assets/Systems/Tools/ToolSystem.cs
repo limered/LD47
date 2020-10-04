@@ -4,10 +4,11 @@ using UniRx;
 using UnityEngine;
 
 [GameSystem]
-public class ToolSystem : GameSystem<ToolComponent>
+public class ToolSystem : GameSystem<ToolComponent, ToolButton>
 {
     public override void Register(ToolComponent component)
     {
+        RegisterWaitable(component);
         MessageBroker.Default.Receive<CleanUpEvent>()
             .Subscribe(_ => AnimateCleaning(component))
             .AddTo(component);
@@ -20,6 +21,11 @@ public class ToolSystem : GameSystem<ToolComponent>
     private void OnSelectTool(ToolComponent component, SelectToolAction obj)
     {
         SelectTool(component, obj.ToolToSelect);
+    }
+
+    public override void Register(ToolButton component)
+    {
+        WaitOn<ToolComponent>().Subscribe(toolComponent => component.ToolComponent = toolComponent).AddTo(component);
     }
 
     private void AnimateCleaning(ToolComponent comp)
