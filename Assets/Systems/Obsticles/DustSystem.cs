@@ -38,6 +38,7 @@ namespace Assets.Systems.Obsticles
                 .Where(b => b)
                 .Subscribe(_ => StopDying(component))
                 .AddTo(component);
+
         }
 
         private void StopDying(DustComponent component)

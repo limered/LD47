@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 1675654903845899708}
   - component: {fileID: 1675654903845899710}
   - component: {fileID: 1675654903845899711}
+  - component: {fileID: 806040938999485416}
   m_Layer: 0
   m_Name: cramp_atlas_0
   m_TagString: Untagged
@@ -157,7 +158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675654903845899709}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1675654902605633511}
@@ -233,3 +234,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &806040938999485416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675654903845899709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a30444444314846a729d6b348c55df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsCopy: 0
