@@ -3,6 +3,7 @@ using Assets.Systems.Obsticles;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using Assets.Utils.Math;
 
 namespace Assets.Systems.HamsterCollision
 {
@@ -18,6 +19,10 @@ namespace Assets.Systems.HamsterCollision
 
             WaitOn<Turntable.Turntable>()
                 .ThenOnUpdate(_ => ResetRotation(component))
+                .AddTo(component);
+
+            SystemUpdate(component)
+                .Subscribe(SetAnimationByPosition)
                 .AddTo(component);
         }
 
@@ -51,23 +56,28 @@ namespace Assets.Systems.HamsterCollision
         {
             var animator = comp.HamsterModel.GetComponent<Animator>();
 
-            var newPosition = comp.RecordModel.transform.position;
-            var oldPosition = comp.transform.position;
-            if (newPosition.x <= oldPosition.x && newPosition.y >= oldPosition.y)
+            var recordPosition = comp.RecordModel.transform.position;
+            var hamsterPosition = comp.transform.position;
+            var directionToHamster = recordPosition.DirectionTo(hamsterPosition).normalized;
+            var line = new Vector2(1, 0);
+
+            var angle = Vector2.Angle(directionToHamster, line);
+            var top = directionToHamster.y > 0;
+
+            if(angle <= 22.5f && angle >= 0f)
             {
                 animator.Play(Hamster.Move.Up);
-            }
-            else if (newPosition.x >= oldPosition.x && newPosition.y >= oldPosition.y)
+            } else if(angle <= 67.5f && angle >= 22.5f) {
+                animator.Play(top ? Hamster.Move.LeftUp : Hamster.Move.RightUp);
+            } else if(angle <= 112.5f && angle >= 67.5f)
+            {
+                animator.Play(top ? Hamster.Move.Left : Hamster.Move.Right);
+            } else if(angle <= 157.5f && angle >= 112.5f)
+            {
+                animator.Play(top ? Hamster.Move.LeftDown : Hamster.Move.RightDown);
+            } else if(angle <= 202.5f && angle >= 157.5f)
             {
                 animator.Play(Hamster.Move.Down);
-            }
-            else if (newPosition.x >= oldPosition.x && newPosition.y <= oldPosition.y)
-            {
-                animator.Play(Hamster.Move.Left);
-            }
-            else if (newPosition.x >= oldPosition.x && newPosition.y >= oldPosition.y)
-            {
-                animator.Play(Hamster.Move.Right);
             }
         }
     }
