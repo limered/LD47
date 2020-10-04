@@ -14,8 +14,14 @@ namespace Assets.Systems.VinylMusicSystem
             //MessageBroker.Default.Receive<GameMsgStart>().Subscribe(_ => StartVinylMusic(comp));
 
             MessageBroker.Default.Receive<VinylJumpMsg>().Subscribe(msg => Jump(comp, msg));
+            MessageBroker.Default.Receive<NeedleChangeSpeedMsg>().Subscribe(msg => ChangeSpeed(comp, msg));
 
             SystemUpdate(comp).Subscribe(UpdateMusicProgress).AddTo(comp);
+        }
+
+        private void ChangeSpeed(VinylMusicComponent comp, NeedleChangeSpeedMsg msg)
+        {
+            comp.VinylMusicSource.pitch += msg.SpeedChangeAmount;
         }
 
         private static void UpdateMusicProgress(VinylMusicComponent comp)
