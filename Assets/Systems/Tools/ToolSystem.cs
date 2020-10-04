@@ -18,6 +18,9 @@ public class ToolSystem : GameSystem<ToolComponent>
         {
             Debug.Log("YOU SHOULD CLEAN WITH BROOM");
             var animator = comp.BroomModel.GetComponent<Animator>();
+            animator.runtimeAnimatorController.animationClips[1].wrapMode = WrapMode.Once;
+            Debug.Log("second " + animator.runtimeAnimatorController.animationClips[1].name);
+
             animator.Play(Hamster.Clean.Broom);
         }
         else if(comp.CurrentTool == CurrentTool.Hammer)
