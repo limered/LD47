@@ -1,4 +1,5 @@
 ﻿using SystemBase;
+using Systems.GameState.Messages;
 using Assets.GameState.Messages;
 using UniRx;
 using UnityEngine;
@@ -10,9 +11,9 @@ namespace Assets.Systems.VinylMusicSystem
     {
         public override void Register(VinylMusicComponent comp)
         {
-            StartVinylMusic(comp);
-            //MessageBroker.Default.Receive<GameMsgStart>().Subscribe(_ => StartVinylMusic(comp));
+            MessageBroker.Default.Publish(new GameMsgStart());
 
+            MessageBroker.Default.Receive<GameMsgStart>().Subscribe(_ => StartVinylMusic(comp));
             MessageBroker.Default.Receive<VinylJumpMsg>().Subscribe(msg => Jump(comp, msg));
             MessageBroker.Default.Receive<NeedleChangeSpeedMsg>().Subscribe(msg => ChangeSpeed(comp, msg));
 
