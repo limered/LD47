@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-guid: db333e733bc11de4ca36faee9e49f3e7
+guid: 5b773a304acb2b5438bc7b030d542304
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 8335915740546622498
-    second: platte_animation_0
-  - first:
-      213: -100159600178179471
-    second: platte_animation_1
-  - first:
-      213: -508570281815731024
-    second: platte_animation_2
-  - first:
-      213: 6683013459891882143
-    second: platte_animation_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -53,12 +41,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 950
+  spritePixelsToUnits: 2200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,91 +99,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: platte_animation_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 930
-        height: 926
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2246ed0533f1fa370800000000000000
-      internalID: 8335915740546622498
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: platte_animation_1
-      rect:
-        serializedVersion: 2
-        x: 1185
-        y: 3
-        width: 933
-        height: 921
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 172d882df592c9ef0800000000000000
-      internalID: -100159600178179471
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: platte_animation_2
-      rect:
-        serializedVersion: 2
-        x: 2375
-        y: 0
-        width: 938
-        height: 926
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b49d01f50231f8f0800000000000000
-      internalID: -508570281815731024
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: platte_animation_3
-      rect:
-        serializedVersion: 2
-        x: 3563
-        y: 0
-        width: 935
-        height: 926
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f98820a6555debc50800000000000000
-      internalID: 6683013459891882143
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
