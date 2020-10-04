@@ -1,11 +1,9 @@
-﻿using System;
+﻿using GameState.States;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SystemBase;
-using Systems.GameState.Messages;
 using UniRx;
 using UnityEngine;
+using Utils;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -16,9 +14,10 @@ namespace Assets.Systems.Obsticles
     {
         public override void Register(DustSpawnComponent component)
         {
-            //MessageBroker.Default.Receive<GameMsgStart>()
-            //    .Subscribe(_ => StartSpawning(component))
-            //    .AddTo(component);
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is Running)
+                .Subscribe(_ => StartSpawning(component))
+                .AddTo(component);
 
             StartSpawning(component);
         }
@@ -40,7 +39,7 @@ namespace Assets.Systems.Obsticles
 
             var obj = Object.Instantiate(component.DustPrefabs[rand],
                 new Vector3(posX, posY, pos.z), Quaternion.identity);
-            obj.GetComponent<DustComponent>().TargetLocation.Value = new Vector3(posX,  posY);
+            obj.GetComponent<DustComponent>().TargetLocation.Value = new Vector3(posX, posY);
         }
     }
 }
