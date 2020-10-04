@@ -1,4 +1,5 @@
 ﻿using GameState.States;
+using System;
 using SystemBase;
 using UniRx;
 using UniRx.Triggers;
@@ -40,6 +41,10 @@ namespace Assets.Systems.Obsticles
 
             scratch.gameObject.OnDestroyAsObservable()
                 .Subscribe(_ => obj.CurrentScratchCount--);
+
+            Observable.Timer(TimeSpan.FromSeconds(20))
+                .Subscribe(_ => scratch.GetComponent<ScratchComponent>().StartFadeout())
+                .AddTo(scratch);
         }
     }
 }
