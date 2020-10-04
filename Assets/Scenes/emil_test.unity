@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3689044227897182392, guid: 872702670bc0f3244985b1293c58341d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4798437895860691430, guid: 872702670bc0f3244985b1293c58341d, type: 3}
       propertyPath: m_Name
       value: Game

@@ -43,7 +43,7 @@ namespace Assets.Systems.VinylMusicSystem
         {
             comp.MusicProgress.Value = comp.VinylMusicSource.time / comp.VinylMusicSource.clip.length;
 
-            if (comp.VinylMusicSource.time >= comp.VinylMusicSource.clip.length)
+            if (!comp.VinylMusicSource.isPlaying && IoC.Game.GameStateContext.CurrentState.Value is Running)
             {
                 MessageBroker.Default.Publish(new MusicEndedEvent());
             }
