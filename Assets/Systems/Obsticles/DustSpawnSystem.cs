@@ -30,8 +30,7 @@ namespace Assets.Systems.Obsticles
 
         private void SpawnDust(DustSpawnComponent component)
         {
-            const int perFrame = 20;
-            var shouldSpawn = (int)(Random.value * perFrame) % perFrame == 0;
+            var shouldSpawn = (int)(Random.value * component.DustCount) % component.DustCount == 0;
             if (!shouldSpawn) return;
 
             var pos = component.transform.position;
