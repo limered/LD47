@@ -123,6 +123,49 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1222633216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1462884095, guid: 872702670bc0f3244985b1293c58341d, type: 3}
+  m_PrefabInstance: {fileID: 4798437894692103041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1222633219
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222633216}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 81bedd5b074329444a7c6f03b7bdad4a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1781367868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 888974930, guid: 872702670bc0f3244985b1293c58341d, type: 3}
+  m_PrefabInstance: {fileID: 4798437894692103041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1781367871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781367868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303894238b77d424c901e183e6e54df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WobbleStrengthPercent: 0.1
+  WobbleSpeed: 20
 --- !u!1001 &4798437894692103041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,6 +176,26 @@ PrefabInstance:
     - target: {fileID: 86798626792874040, guid: 872702670bc0f3244985b1293c58341d, type: 3}
       propertyPath: CurrentTool
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394704886557854780, guid: 872702670bc0f3244985b1293c58341d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.036
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394704886557854780, guid: 872702670bc0f3244985b1293c58341d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798437894762223322, guid: 872702670bc0f3244985b1293c58341d, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798437894762223322, guid: 872702670bc0f3244985b1293c58341d, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798437894762223322, guid: 872702670bc0f3244985b1293c58341d, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4798437895860691430, guid: 872702670bc0f3244985b1293c58341d, type: 3}
       propertyPath: m_Name
