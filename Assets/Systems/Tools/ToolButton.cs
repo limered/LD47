@@ -10,10 +10,24 @@ public class ToolButton : GameComponent
 
     public void OnMouseDown()
     {
+        var toolToSelect = ToolComponent.CurrentTool == CurrentTool.Broom ? CurrentTool.Hammer : CurrentTool.Broom;
+
         MessageBroker.Default.Publish(
-            new SelectToolAction { 
-                ToolToSelect = ToolComponent.CurrentTool == CurrentTool.Broom ? CurrentTool.Hammer : CurrentTool.Broom
+            new SelectToolAction {
+                ToolToSelect = toolToSelect
             });
-        gameObject.GetComponent<SpriteRenderer>().sprite = ToolComponent.CurrentTool == CurrentTool.Broom ? ButtonSprites[0] : ButtonSprites[1];
+        OnSelectTool(toolToSelect);
+    }
+
+    protected override void OverwriteStart()
+    {
+        MessageBroker.Default.Receive<SelectToolAction>()
+            .Subscribe(newTool => OnSelectTool(newTool.ToolToSelect))
+            .AddTo(this);
+    }
+
+    public void OnSelectTool(CurrentTool tool)
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = tool == CurrentTool.Broom ? ButtonSprites[0] : ButtonSprites[1];
     }
 }
