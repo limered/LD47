@@ -215,10 +215,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4798437895860691432}
     m_Modifications:
-    - target: {fileID: 1467705706418740766, guid: dfdb450507d0c7a4dbec1cd7a8ee908d, type: 3}
-      propertyPath: m_Volume
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2297724495016174355, guid: dfdb450507d0c7a4dbec1cd7a8ee908d, type: 3}
       propertyPath: m_Name
       value: Music

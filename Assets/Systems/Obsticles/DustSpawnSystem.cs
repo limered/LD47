@@ -30,17 +30,18 @@ namespace Assets.Systems.Obsticles
 
         private void SpawnDust(DustSpawnComponent component)
         {
-            const int perFrame = 400;
+            const int perFrame = 20;
             var shouldSpawn = (int)(Random.value * perFrame) % perFrame == 0;
             if (!shouldSpawn) return;
 
             var pos = component.transform.position;
             var rand = (int)(Random.value * 4);
-            var position = Random.insideUnitCircle + new Vector2(pos.x, pos.y);
+            var posX = Random.value * 2 - 1 + pos.x;
+            var posY = Random.value * 2 - 1 + pos.y;
 
             var obj = Object.Instantiate(component.DustPrefabs[rand],
-                new Vector3(position.x, position.y, pos.z), Quaternion.identity);
-            obj.GetComponent<DustComponent>().TargetLocation.Value = new Vector3(position.x,  position.y);
+                new Vector3(posX, posY, pos.z), Quaternion.identity);
+            obj.GetComponent<DustComponent>().TargetLocation.Value = new Vector3(posX,  posY);
         }
     }
 }

@@ -215,54 +215,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -181.867, y: -3434.408, z: -146.796}
---- !u!1 &1114972971
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1114972973}
-  - component: {fileID: 1114972972}
-  m_Layer: 0
-  m_Name: DustSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1114972972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114972971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 102ef2a43ada4e24bbe38b431253654f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DustPrefabs:
-  - {fileID: 1999759590078116852, guid: c2f6fdf0564f62b4ea53d2f34b370a5a, type: 3}
-  - {fileID: 2509728584924476595, guid: ac5d8a42a6c6b5245a0d2d7acc0f5924, type: 3}
-  - {fileID: 6342341698380181153, guid: b5bd968c6d276764fb01a296750bec95, type: 3}
-  - {fileID: 1675654902605633505, guid: cee2c77becc2628428c8888d8472b45a, type: 3}
---- !u!4 &1114972973
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114972971}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.19, y: -1.93, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4798437894692103041
 PrefabInstance:
   m_ObjectHideFlags: 0
