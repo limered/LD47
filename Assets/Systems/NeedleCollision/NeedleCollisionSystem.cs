@@ -1,6 +1,7 @@
 ﻿using System;
 using SystemBase;
 using Assets.GameState.Messages;
+using Assets.Systems.HamsterCollision;
 using Assets.Systems.Obsticles;
 using UniRx;
 using UniRx.Triggers;
@@ -34,7 +35,11 @@ namespace Assets.Systems.NeedleCollision
                 MessageBroker.Default.Publish(new NeedleChangeSpeedMsg(-cfg.DustSlowAmount));
             }
 
-            //MessageBroker.Default.Publish(new VinylJumpMsg(.02f));
+            var hamsterComponent = collider.gameObject.GetComponent<HamsterComponent>();
+            if (hamsterComponent != null)
+            {
+                MessageBroker.Default.Publish(new VinylJumpMsg(1f));
+            }
         }
 
         private static void EndSlowEffect(NeedleCollisionConfigComponent cfg)
