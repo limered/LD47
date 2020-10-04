@@ -20,16 +20,9 @@ namespace Assets.Systems.Points
                 .Subscribe(_ => SetStartTime())
                 .AddTo(component);
 
-            IoC.Game.GameStateContext.CurrentState
-                .Where(state => state is Running)
-                .Subscribe(_ => RegisterUpdatePoints(component))
-                .AddTo(component);
-        }
-
-        private void RegisterUpdatePoints(PointComponent component)
-        {
             WaitOn<VinylMusicComponent>()
-                .ThenOnUpdate(vinylMusicComponent => UpdatePoints(component, vinylMusicComponent)).AddTo(component);
+                .ThenOnUpdate(vinylMusicComponent => UpdatePoints(component, vinylMusicComponent))
+                .AddTo(component);
         }
 
         private void SetStartTime()
@@ -41,13 +34,15 @@ namespace Assets.Systems.Points
 
         private void UpdatePoints(PointComponent comp, VinylMusicComponent vinylMusicComponent)
         {
+            if (!(IoC.Game.GameStateContext.CurrentState.Value is Running)) return;
+
             var actualPassedTime = (DateTime.Now - _startTime).TotalSeconds;
             var passedMusicTime = vinylMusicComponent.VinylMusicSource.time;
 
             var passedTimeDiff = actualPassedTime - passedMusicTime;
             var passedTimeDiffTimeSpan = TimeSpan.FromSeconds(passedTimeDiff);
             var formattedTimeDiff =
-                $"{passedTimeDiffTimeSpan.Minutes:D2}:{passedTimeDiffTimeSpan.Seconds:D2}";
+                $"{passedTimeDiffTimeSpan.Minutes:D2}:{passedTimeDiffTimeSpan.Seconds:D2}:{passedTimeDiffTimeSpan.Milliseconds / 100}";
 
             var textComponent = comp.GetComponent<Text>();
             textComponent.text = formattedTimeDiff;
