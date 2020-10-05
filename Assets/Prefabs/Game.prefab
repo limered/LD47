@@ -429,6 +429,9 @@ MonoBehaviour:
   - Name: hamster_squeak
     File: {fileID: 8300000, guid: dc882b8fd0ab88b438640a6337aa48a4, type: 3}
     Volume: 0.5
+  - Name: hammer
+    File: {fileID: 8300000, guid: 722c563719e99e741baa79c751d8288f, type: 3}
+    Volume: 1
 --- !u!114 &1841546074
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -68,6 +68,7 @@ namespace Assets.Systems.HamsterCollision
                 var scratch = other.GetComponent<ScratchComponent>();
                 if (scratch)
                 {
+                    "hammer".Play();
                     DeleteScratch(scratch);
                 }
             }
