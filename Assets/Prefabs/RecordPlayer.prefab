@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 377961527}
   - component: {fileID: 2942756358636060112}
   - component: {fileID: 822221947}
+  - component: {fileID: 626368420}
   m_Layer: 0
   m_Name: Plattenspielerarm
   m_TagString: Untagged
@@ -98,6 +99,22 @@ MonoBehaviour:
   DustSlowAmount: 0.05
   DustSlowLength: 1
   ScratchJumpAmount: 0.05
+--- !u!114 &626368420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377961526}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303894238b77d424c901e183e6e54df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WobbleStrengthPercent: 0.005
+  WobbleSpeed: 10
+  IsBasedOnGameState: 0
+  GameStates: []
 --- !u!1 &514756352
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +396,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 2de420cd80a6ca84d97f2779327faea7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -406,6 +423,8 @@ GameObject:
   - component: {fileID: 2060116918}
   - component: {fileID: 8507080913091201237}
   - component: {fileID: 3176020496557172054}
+  - component: {fileID: 4621923947768263986}
+  - component: {fileID: 8435258463742123712}
   m_Layer: 0
   m_Name: Scratch
   m_TagString: Untagged
@@ -544,6 +563,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358cd449e4aae7b4d87e0412d44ccb69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &4621923947768263986
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888974930}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.693682, y: 3.2797348, z: 0.2}
+  m_Center: {x: -0.5519283, y: 0.34495652, z: 0}
+--- !u!114 &8435258463742123712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888974930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358cd449e4aae7b4d87e0412d44ccb69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &904625425
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,8 +601,9 @@ GameObject:
   - component: {fileID: 904625428}
   - component: {fileID: 904625427}
   - component: {fileID: 624651457}
-  - component: {fileID: 1686673270}
   - component: {fileID: 1686673269}
+  - component: {fileID: 1686673270}
+  - component: {fileID: 6224615167191533231}
   m_Layer: 0
   m_Name: PlayButton
   m_TagString: Untagged
@@ -674,6 +719,21 @@ MonoBehaviour:
   GameStates:
   - StartScreen
   - GameOver
+--- !u!114 &1686673269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904625425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55aeddf76fa9e6846b3f230430ca1a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsBasedOnGameState: 1
+  GameStates:
+  - GameOver
 --- !u!54 &1686673270
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -690,7 +750,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1686673269
+--- !u!114 &6224615167191533231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -771,6 +831,9 @@ GameObject:
   - component: {fileID: 4944346782641468274}
   - component: {fileID: 3802423260018058388}
   - component: {fileID: 4139146189138705656}
+  - component: {fileID: 859340328503727133}
+  - component: {fileID: 699119473340361299}
+  - component: {fileID: 1470855321997781171}
   m_Layer: 0
   m_Name: BroomClean
   m_TagString: Untagged
@@ -914,6 +977,47 @@ MonoBehaviour:
   IsBasedOnGameState: 0
   GameStates: []
 --- !u!114 &4139146189138705656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287887295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e95203780d2ae14a818b60e73c36318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &859340328503727133
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287887295}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.71379375, y: 1.6233641, z: 0.2}
+  m_Center: {x: -0.000000074505806, y: -0.12935758, z: 0}
+--- !u!114 &699119473340361299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287887295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303894238b77d424c901e183e6e54df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WobbleStrengthPercent: 0.1
+  WobbleSpeed: 20
+  IsBasedOnGameState: 0
+  GameStates: []
+--- !u!114 &1470855321997781171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

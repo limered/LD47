@@ -156,6 +156,7 @@ MonoBehaviour:
   ScratchEffect: {fileID: 418009238958694763}
   CurrentScratchCount: 0
   ParticleCount: 60
+  SpawnDelay: 0.3
 --- !u!65 &1502868522
 BoxCollider:
   m_ObjectHideFlags: 0
