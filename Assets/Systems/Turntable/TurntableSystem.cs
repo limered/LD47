@@ -32,7 +32,7 @@ namespace Assets.Systems.Turntable
                 .AddTo(component);
 
             WaitOn<Turntable>()
-                .ThenOnUpdate(turntable => UpdateSpeed(component, turntable))
+                .ThenOnUpdate(turntable => RotateVinyl(component, turntable))
                 .AddTo(component);
         }
 
@@ -91,9 +91,10 @@ namespace Assets.Systems.Turntable
             }
         }
 
-        private static void UpdateSpeed(Vinyl component, Turntable turntable)
+        private static void RotateVinyl(Vinyl component, Turntable turntable)
         {
-            if (!(IoC.Game.GameStateContext.CurrentState.Value is Running)) return;
+            if (!(IoC.Game.GameStateContext.CurrentState.Value is Running 
+                  || IoC.Game.GameStateContext.CurrentState.Value is GameOver)) return;
 
             component.transform
                 .Rotate(component.Axis, Time.deltaTime * -turntable.Speed.Value, Space.Self);

@@ -1,5 +1,6 @@
 ﻿using Assets.Systems.Tools.Actions;
 using SystemBase;
+using Systems.GameState.Messages;
 using UniRx;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ public class ToolButton : GameComponent
                 ToolToSelect = toolToSelect
             });
         OnSelectTool(toolToSelect);
+
+        MessageBroker.Default.Publish(new GameMsgEnd());
     }
 
     protected override void OverwriteStart()
