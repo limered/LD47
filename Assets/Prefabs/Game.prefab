@@ -840,6 +840,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4798437895860691432}
     m_Modifications:
+    - target: {fileID: 514756354, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 49f8c9cc4202dfb42b1b39bb9be588ce, type: 3}
+    - target: {fileID: 1287887297, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c6401e3b7c4d4e488a376611d5029e0, type: 3}
+    - target: {fileID: 3137264423116598021, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bde5235c4042c5440853bcc0ffcbf47a, type: 3}
     - target: {fileID: 5894514150342845364, guid: 250164240bcbf034abbecc481512118d, type: 3}
       propertyPath: m_Name
       value: RecordPlayer
@@ -888,7 +900,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8378467581275671863, guid: 250164240bcbf034abbecc481512118d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 250164240bcbf034abbecc481512118d, type: 3}
 --- !u!4 &4798437894812306596 stripped
 Transform:
