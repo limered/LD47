@@ -426,6 +426,9 @@ MonoBehaviour:
   - Name: broom
     File: {fileID: 8300000, guid: a759a2ca365f9be4f8fb9c3d5fccf114, type: 3}
     Volume: 0.4
+  - Name: hamster_squeak
+    File: {fileID: 8300000, guid: dc882b8fd0ab88b438640a6337aa48a4, type: 3}
+    Volume: 0.5
 --- !u!114 &1841546074
 MonoBehaviour:
   m_ObjectHideFlags: 0

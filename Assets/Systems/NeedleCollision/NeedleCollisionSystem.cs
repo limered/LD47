@@ -3,6 +3,7 @@ using SystemBase;
 using Assets.GameState.Messages;
 using Assets.Systems.HamsterCollision;
 using Assets.Systems.Obsticles;
+using StrongSystems.Audio;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -38,6 +39,7 @@ namespace Assets.Systems.NeedleCollision
             var hamsterComponent = collider.gameObject.GetComponent<HamsterComponent>();
             if (hamsterComponent != null)
             {
+                "hamster_squeak".Play();
                 MessageBroker.Default.Publish(new VinylJumpMsg(1f));
             }
 
