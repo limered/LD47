@@ -887,11 +887,23 @@ PrefabInstance:
     m_TransformParent: {fileID: 4798437895860691432}
     m_Modifications:
     - target: {fileID: 904625427, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: ButtonSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 904625427, guid: 250164240bcbf034abbecc481512118d, type: 3}
       propertyPath: Play
       value: 
       objectReference: {fileID: 1394704884755206656}
     - target: {fileID: 904625427, guid: 250164240bcbf034abbecc481512118d, type: 3}
       propertyPath: ButtonPressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45bb461ed0a420741b3246d8392e00ff, type: 3}
+    - target: {fileID: 904625427, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: ButtonSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: b606ac9a8be93ac42a6797eb5a3e90c4, type: 3}
+    - target: {fileID: 904625427, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: ButtonSprites.Array.data[1]
       value: 
       objectReference: {fileID: 21300000, guid: 45bb461ed0a420741b3246d8392e00ff, type: 3}
     - target: {fileID: 5894514150342845364, guid: 250164240bcbf034abbecc481512118d, type: 3}
