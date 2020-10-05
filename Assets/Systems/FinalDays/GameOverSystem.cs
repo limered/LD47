@@ -60,7 +60,7 @@ namespace Assets.Systems.FinalDays
         private void RotateColor(float obj)
         {
             var rendererComp = _discComponent.GetComponentInChildren<SpriteRenderer>();
-            Color.RGBToHSV(rendererComp.color, out var h, out var s, out var v);
+            Color.RGBToHSV(rendererComp.color, out var h, out _, out var v);
             rendererComp.color = Color.HSVToRGB(h + 0.005f, 1, v);
         }
     }

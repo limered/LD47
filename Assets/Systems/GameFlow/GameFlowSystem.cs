@@ -39,6 +39,7 @@ namespace Assets.Systems.GameFlow
         private void OnMusicEnd(MusicEndedEvent obj)
         {
             MessageBroker.Default.Publish(new GameMsgEnd());
+            MessageBroker.Default.Publish(new SelectToolAction { ToolToSelect = CurrentTool.Broom });
         }
     }
 }

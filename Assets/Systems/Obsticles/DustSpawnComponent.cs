@@ -8,5 +8,6 @@ namespace Assets.Systems.Obsticles
     {
         public List<GameObject> DustPrefabs;
         public int InverseDustSpawnPropability;
+        public float SpawnerSize = 2;
     }
 }
