@@ -28,7 +28,7 @@ namespace Assets.Systems.Turntable
         {
             IoC.Game.GameStateContext.CurrentState
                 .Where(state => state is Running)
-                .Subscribe(_ => RegisterVinyl(component))
+                .Subscribe(_ => StartVinylAnimation(component))
                 .AddTo(component);
 
             WaitOn<Turntable>()
@@ -44,6 +44,16 @@ namespace Assets.Systems.Turntable
 
             MessageBroker.Default.Receive<PlayButtonClickedEvent>().Subscribe(_ => PlayButtonPressed(component))
                 .AddTo(component);
+
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is Running)
+                .Subscribe(_ => StartNeedleWobbling(component))
+                .AddTo(component);
+        }
+
+        private static void StartNeedleWobbling(Arm component)
+        {
+            component.gameObject.GetComponent<RandomScalingComponent>().enabled = true;
         }
 
         public override void Register(VinylMusicComponent component) => RegisterWaitable(component);
@@ -88,15 +98,12 @@ namespace Assets.Systems.Turntable
             component.transform
                 .Rotate(component.Axis, Time.deltaTime * -turntable.Speed.Value, Space.Self);
         }
+
         private static void StartVinylAnimation(Vinyl component)
         {
             component.VinylAnimationGameObject.GetComponent<Animator>().enabled = true;
         }
 
-        private void RegisterVinyl(Vinyl component)
-        {
-            StartVinylAnimation(component);
-        }
         private void ChangeRotationSpeed(VinylMusicComponent vinylMusic, Turntable component)
         {
             if (!(IoC.Game.GameStateContext.CurrentState.Value is Running)) return;
