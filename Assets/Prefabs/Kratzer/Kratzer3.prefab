@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1602401527789107642}
   m_Layer: 0
   m_Name: Kratzer3
-  m_TagString: Untagged
+  m_TagString: Scratch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

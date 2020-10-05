@@ -1,8 +1,10 @@
 ﻿using System;
 using Assets.Systems.VinylMusicSystem;
 using SystemBase;
+using GameState.States;
 using UniRx;
 using UnityEngine;
+using Utils;
 using Object = UnityEngine.Object;
 
 namespace Assets.Systems.Obsticles
@@ -34,6 +36,20 @@ namespace Assets.Systems.Obsticles
         {
             RegisterWaitable(component);
             _scrathConfig = component;
+
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is Running)
+                .Subscribe(_ => ClearAllScratches())
+                .AddTo(component);
+        }
+
+        private static void ClearAllScratches()
+        {
+            GameObject[] scratches = GameObject.FindGameObjectsWithTag("Scratch");
+            foreach (var scratch in scratches)
+            {
+                Object.Destroy(scratch);
+            }
         }
 
         public override void Register(VinylMusicComponent component)

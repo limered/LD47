@@ -1,5 +1,7 @@
 ﻿using GameState.States;
 using SystemBase;
+using SystemBase.StateMachineBase;
+using Systems;
 using UniRx;
 using UnityEngine;
 using Utils;
@@ -17,6 +19,19 @@ namespace Assets.Systems.Obsticles
                 .Where(_ => IoC.Game.GameStateContext.CurrentState.Value is Running)
                 .Subscribe(SpawnDust)
                 .AddTo(component);
+
+            IoC.Game.GameStateContext.CurrentState.Where(state => state is Running)
+                .Subscribe(RemoveAllDusts)
+                .AddTo(component);
+        }
+
+        private void RemoveAllDusts(BaseState<Game> obj)
+        {
+            GameObject[] dusts = GameObject.FindGameObjectsWithTag("Dust");
+            foreach (var dust in dusts)
+            {
+                Object.Destroy(dust);
+            }
         }
 
         private void SpawnDust(DustSpawnComponent component)
