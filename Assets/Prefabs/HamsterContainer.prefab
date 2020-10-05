@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4383a0717ceaf44f80e38c111bf7786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InverseSpawnPropability: 600
+  InverseSpawnPropability: 1000
   MaxScratchCount: 3
   SpawnerBox: {fileID: 1502868522}
   Plate: {fileID: 0}
