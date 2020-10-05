@@ -1,4 +1,5 @@
 ﻿using SystemBase;
+using UniRx;
 using UnityEngine;
 
 namespace Assets.Systems.HamsterCollision
@@ -10,5 +11,6 @@ namespace Assets.Systems.HamsterCollision
         public Vector3 Axis;
         public GameObject RecordModel;
         public GameObject HamsterModel;
+        public ReactiveProperty<Hamster.HamsterDirection> CurrentDirection = new ReactiveProperty<Hamster.HamsterDirection>();
     }
 }

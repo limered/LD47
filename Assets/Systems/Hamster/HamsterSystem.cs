@@ -102,19 +102,21 @@ namespace Assets.Systems.HamsterCollision
 
             if(angle <= 22.5f && angle >= 0f)
             {
-                animator.Play(Hamster.Move.Up);
+                comp.CurrentDirection.Value = Hamster.HamsterDirection.Up;
             } else if(angle <= 67.5f && angle >= 22.5f) {
-                animator.Play(top ? Hamster.Move.LeftUp : Hamster.Move.RightUp);
+                comp.CurrentDirection.Value = top ? Hamster.HamsterDirection.LeftUp : Hamster.HamsterDirection.RightUp ;
             } else if(angle <= 112.5f && angle >= 67.5f)
             {
-                animator.Play(top ? Hamster.Move.Left : Hamster.Move.Right);
+                comp.CurrentDirection.Value = top ? Hamster.HamsterDirection.Left : Hamster.HamsterDirection.Right;
             } else if(angle <= 157.5f && angle >= 112.5f)
             {
-                animator.Play(top ? Hamster.Move.LeftDown : Hamster.Move.RightDown);
+                comp.CurrentDirection.Value = top ? Hamster.HamsterDirection.LeftDown : Hamster.HamsterDirection.RightDown;
             } else if(angle <= 202.5f && angle >= 157.5f)
             {
-                animator.Play(Hamster.Move.Down);
+                comp.CurrentDirection.Value = Hamster.HamsterDirection.Down;
             }
+
+            animator.Play(Hamster.DirectionToAnimation(comp.CurrentDirection.Value));
         }
     }
 }
