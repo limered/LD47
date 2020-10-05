@@ -1,4 +1,5 @@
-﻿using GameState.States;
+﻿using Assets.Systems.UI;
+using GameState.States;
 using System;
 using SystemBase;
 using UniRx;
@@ -17,6 +18,9 @@ namespace Assets.Systems.Control
             component.UpdateAsObservable()
                 //.Where(u => IoC.Game.GameStateContext.CurrentState.Value.GetType() == typeof(Running))
                 .Subscribe(CheckMousePorition(component))
+                .AddTo(component);
+
+            MessageBroker.Default.Receive<PlayButtonClickedEvent>().Subscribe(_ => RollIn(component))
                 .AddTo(component);
         }
 
@@ -51,6 +55,11 @@ namespace Assets.Systems.Control
                 component.MousePosition.Value = new Vector3(hit.point.x, hit.point.y);
                 component.transform.position = component.MousePosition.Value;
             };
+        }
+
+        private void RollIn(MouseComponent comp)
+        {
+            comp.Target.transform.position = comp.MousePosition.Value;
         }
     }
 }
