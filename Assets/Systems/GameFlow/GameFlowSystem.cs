@@ -25,7 +25,6 @@ namespace Assets.Systems.GameFlow
         {
             if (IoC.Game.GameStateContext.CurrentState.Value is GameOver)
             {
-                MessageBroker.Default.Publish(new GameMsgRestart());
                 MessageBroker.Default.Publish(new GameMsgStart());
             }
             else

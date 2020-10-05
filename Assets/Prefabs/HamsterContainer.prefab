@@ -825,7 +825,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 418009239268099687, guid: 8b5417f6a2ca4374e9feda20bedb7d0f, type: 3}
       propertyPath: EmissionModule.rateOverDistance.scalar
-      value: 2
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 418009239268099687, guid: 8b5417f6a2ca4374e9feda20bedb7d0f, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418009239268099687, guid: 8b5417f6a2ca4374e9feda20bedb7d0f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b5417f6a2ca4374e9feda20bedb7d0f, type: 3}

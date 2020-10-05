@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DustPrefabs:
   - {fileID: 1999759590078116852, guid: 9b30f258f2dee4142a28ff12ab193b41, type: 3}
-  InverseDustSpawnPropability: 20
+  InverseDustSpawnPropability: 7
   SpawnerSize: 7
 --- !u!1 &3929750606772806166
 GameObject:

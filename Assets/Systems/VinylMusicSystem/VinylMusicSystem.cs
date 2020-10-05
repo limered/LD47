@@ -28,7 +28,7 @@ namespace Assets.Systems.VinylMusicSystem
         private void ChangeSpeed(VinylMusicComponent comp, NeedleChangeSpeedMsg msg)
         {
             var newPitch = comp.VinylMusicSource.pitch + msg.SpeedChangeAmount;
-            newPitch = Mathf.Clamp(newPitch, 0.1f, 1f);
+            newPitch = Mathf.Clamp(newPitch, -1f, 1f);
             comp.VinylMusicSource.pitch = newPitch;
         }
 
