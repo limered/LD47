@@ -10,7 +10,7 @@ using Utils;
 namespace Assets.Systems.FinalDays
 {
     [GameSystem]
-    public class GameOverSystem : GameSystem<FinalDiscComponent>
+    public class GameOverSystem : GameSystem<FinalDiscComponent, FinalDisplayComponent>
     {
         private FinalDiscComponent _discComponent;
 
@@ -27,6 +27,11 @@ namespace Assets.Systems.FinalDays
                 .AddTo(component);
 
             _discComponent = component;
+        }
+
+        public override void Register(FinalDisplayComponent component)
+        {
+            
         }
 
         private void Reset(BaseState<Game> obj)
