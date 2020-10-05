@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +38,7 @@ namespace Assets.Systems.FinalDays
             transform.position = _originalPosition;
 
             var body = GetComponent<Rigidbody>();
+            body.isKinematic = true;
             body.velocity = Vector3.zero;
             body.angularVelocity = Vector3.zero;
             body.rotation = _originalRotation;
@@ -59,6 +60,7 @@ namespace Assets.Systems.FinalDays
             var y = Random.value * 2f - 1f;
 
             var body = GetComponent<Rigidbody>();
+            body.isKinematic = false;
             body.AddForce(new Vector3(x, y, 0));
 
             if (transform.position.x > 5)
