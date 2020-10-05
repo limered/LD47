@@ -23,6 +23,7 @@ namespace Assets.Systems.Movement
                 mutator.Mutate(comp.CanMove.Value, direction, speed, out direction, out speed);
             }
 
+            comp.CurrentVelocity.Value = direction * speed;
             comp.transform.position += direction * speed;
         }
     }
