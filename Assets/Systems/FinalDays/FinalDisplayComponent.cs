@@ -8,6 +8,7 @@ using Utils;
 public class FinalDisplayComponent : GameComponent
 {
     public GameObject[] Objects;
+    public GameObject[] ObjectsToHide;
 
     protected override void OverwriteStart()
     {
@@ -28,6 +29,11 @@ public class FinalDisplayComponent : GameComponent
         {
             ObjectToDisplay.SetActive(true);
         }
+
+        foreach (GameObject ObjectToDisplay in ObjectsToHide)
+        {
+            ObjectToDisplay.SetActive(false);
+        }
     }
 
     private void OnEndFinalDays()
@@ -35,6 +41,11 @@ public class FinalDisplayComponent : GameComponent
         foreach (GameObject ObjectToHide in Objects)
         {
             ObjectToHide.SetActive(false);
+        }
+
+        foreach (GameObject ObjectToHide in ObjectsToHide)
+        {
+            ObjectToHide.SetActive(true);
         }
     }
 }

@@ -805,6 +805,8 @@ MonoBehaviour:
   Objects:
   - {fileID: 3929750607390597866}
   - {fileID: 3929750608047491064}
+  ObjectsToHide:
+  - {fileID: 0}
 --- !u!1 &3929750607817442016
 GameObject:
   m_ObjectHideFlags: 0
