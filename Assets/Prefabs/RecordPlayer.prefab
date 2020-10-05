@@ -471,6 +471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WobbleStrengthPercent: 0.1
   WobbleSpeed: 20
+  IsBasedOnGameState: 0
+  GameStates: []
 --- !u!1 &904625425
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,6 +597,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WobbleStrengthPercent: 0.1
   WobbleSpeed: 20
+  IsBasedOnGameState: 0
+  GameStates: []
 --- !u!1 &1114972971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,7 +1310,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 16.21, y: 16.158808}
+  m_Size: {x: 6.4725585, y: 6.4500003}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

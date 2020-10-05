@@ -639,6 +639,10 @@ PrefabInstance:
       propertyPath: GameStates.Array.data[1]
       value: GameOver
       objectReference: {fileID: 0}
+    - target: {fileID: 3137264423116598021, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fabb9b0efede0f74180a2a1599eee5a9, type: 3}
     - target: {fileID: 5894514150342845364, guid: 250164240bcbf034abbecc481512118d, type: 3}
       propertyPath: m_Name
       value: RecordPlayer
