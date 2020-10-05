@@ -18,6 +18,8 @@ namespace Assets.Scripts
             Observable.Timer(TimeSpan.FromSeconds(loadTime))
                 .DoOnSubscribe(() =>
                 {
+                    
+                    
                     progressBar?.SetActive(true);
                     playButton?.SetActive(false);
                 })
