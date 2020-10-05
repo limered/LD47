@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Dust
+  - Scratch
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Floor
   - 
   - 
   - 
@@ -38,6 +40,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Turntable
+    uniqueID: 38479101
+    locked: 0
+  - name: Vinyl
+    uniqueID: 1234966345
+    locked: 0
+  - name: Arm
+    uniqueID: 566004307
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

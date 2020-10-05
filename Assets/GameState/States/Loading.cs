@@ -14,5 +14,10 @@ namespace GameState.States
                 .Subscribe(loading => context.GoToState(new StartScreen()))
                 .AddTo(this);
         }
+
+        public override string ToString()
+        {
+            return nameof(Loading);
+        }
     }
 }

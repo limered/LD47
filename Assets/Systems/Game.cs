@@ -4,6 +4,7 @@ using SystemBase.StateMachineBase;
 using Systems.GameState.Messages;
 using StrongSystems.Audio.Helper;
 using UniRx;
+using UnityEngine;
 using Utils;
 
 namespace Systems
@@ -23,6 +24,13 @@ namespace Systems
             Init();
 
             MessageBroker.Default.Publish(new GameMsgFinishedLoading());
+        }
+
+        private void Start()
+        {
+            //MessageBroker.Default.Publish(new GameMsgStart());
+            QualitySettings.vSyncCount = 1;
+            Application.targetFrameRate = 60;
         }
 
         public override void Init()

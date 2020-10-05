@@ -14,5 +14,10 @@ namespace GameState.States
                 .Subscribe(start => context.GoToState(new Running()))
                 .AddTo(this);
         }
+
+        public override string ToString()
+        {
+            return nameof(StartScreen);
+        }
     }
 }

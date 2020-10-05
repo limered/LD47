@@ -14,5 +14,10 @@ namespace GameState.States
                 .Subscribe(unpause => context.GoToState(new Running()))
                 .AddTo(this);
         }
+
+        public override string ToString()
+        {
+            return nameof(Paused);
+        }
     }
 }
