@@ -1,10 +1,9 @@
-﻿using System.Net.Http.Headers;
-using Assets.Systems.Tools.Actions;
-using Assets.Systems.UI;
+﻿using Assets.Systems.Tools.Actions;
 using Assets.Systems.VinylMusicSystem.Events;
 using GameState.States;
 using SystemBase;
 using Systems.GameState.Messages;
+using Assets.Systems.Turntable;
 using UniRx;
 using Utils;
 
@@ -18,15 +17,16 @@ namespace Assets.Systems.GameFlow
             MessageBroker.Default.Receive<MusicEndedEvent>()
                 .Subscribe(OnMusicEnd);
 
-            MessageBroker.Default.Receive<PlayButtonClickedEvent>()
-                .Subscribe(OnPlayButtonClicked);
+            MessageBroker.Default.Receive<TurntableReady>()
+                .Subscribe(OnTurntableReady);
         }
 
-        private void OnPlayButtonClicked(PlayButtonClickedEvent obj)
+        private void OnTurntableReady(TurntableReady obj)
         {
             if (IoC.Game.GameStateContext.CurrentState.Value is GameOver)
             {
                 MessageBroker.Default.Publish(new GameMsgRestart());
+                MessageBroker.Default.Publish(new GameMsgStart());
             }
             else
             {
