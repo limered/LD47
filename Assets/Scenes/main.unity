@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3929750606665647355, guid: 85e5281d0aebe5c4396b706435d4460b, type: 3}
+      propertyPath: InverseDustSpawnPropability
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3929750607808032992, guid: 85e5281d0aebe5c4396b706435d4460b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -78,7 +78,7 @@ namespace Assets.Systems.Obsticles
             var distance = comp.TargetLocation.Value.DistanceTo(comp.transform.localPosition);
             if (distance < 0.1f || comp.IsOnRecord.Value) return;
 
-            var newPos = Vector3.Lerp(comp.transform.position, comp.TargetLocation.Value, 0.01f);
+            var newPos = Vector3.Lerp(comp.transform.position, comp.TargetLocation.Value, Time.deltaTime);
             comp.transform.position = newPos;
         }
 

@@ -21,9 +21,9 @@ namespace Assets.Systems.Obsticles
         public override void Register(ScratchSpawnerComponent component)
         {
             WaitOn<HamsterComponent>()
-                .Then(hamster => SystemUpdate(component)
+                .Then(hamster => Observable.Interval(TimeSpan.FromMilliseconds(20))
                 .Where(_ => IoC.Game.GameStateContext.CurrentState.Value is Running)
-                .Do(scratch => TryToSpawn(scratch, hamster)))
+                .Do(scratch => TryToSpawn(component, hamster)))
             .Subscribe()
                 .AddTo(component);
         }
@@ -37,6 +37,7 @@ namespace Assets.Systems.Obsticles
             if (!shouldSpawn || obj.CurrentScratchCount >= obj.MaxScratchCount) return;
 
             if (obj.ScratchEffect) obj.ScratchEffect.Emit(new ParticleSystem.EmitParams { }, obj.ParticleCount);
+            "scratch".Play();
 
             Observable.Timer(TimeSpan.FromSeconds(obj.SpawnDelay)).Subscribe(__ =>
             {
@@ -49,7 +50,7 @@ namespace Assets.Systems.Obsticles
                 var scratchNr = (int)(Random.value * obj.ScratchPrefabs.Count);
 
                 var scratch = Object.Instantiate(obj.ScratchPrefabs[scratchNr], position, Quaternion.identity, obj.Plate.transform);
-                "scratch".Play();
+                
                 obj.CurrentScratchCount++;
 
                 scratch.gameObject.OnDestroyAsObservable()

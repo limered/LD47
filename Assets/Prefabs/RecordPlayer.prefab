@@ -815,7 +815,7 @@ MonoBehaviour:
   - {fileID: 2509728584924476595, guid: ac5d8a42a6c6b5245a0d2d7acc0f5924, type: 3}
   - {fileID: 6342341698380181153, guid: b5bd968c6d276764fb01a296750bec95, type: 3}
   - {fileID: 1675654902605633505, guid: cee2c77becc2628428c8888d8472b45a, type: 3}
-  InverseDustSpawnPropability: 75
+  InverseDustSpawnPropability: 20
   SpawnerSize: 2
 --- !u!1 &1287887295
 GameObject:

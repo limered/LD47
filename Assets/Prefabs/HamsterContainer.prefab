@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4383a0717ceaf44f80e38c111bf7786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InverseSpawnPropability: 1000
+  InverseSpawnPropability: 200
   MaxScratchCount: 3
   SpawnerBox: {fileID: 1502868522}
   Plate: {fileID: 0}
@@ -156,7 +156,7 @@ MonoBehaviour:
   ScratchEffect: {fileID: 418009238958694763}
   CurrentScratchCount: 0
   ParticleCount: 60
-  SpawnDelay: 0.3
+  SpawnDelay: 0.5
 --- !u!65 &1502868522
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -743,8 +743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4df15b3b7c5f34449711cf360fc3f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 10
-  MaxSpeed: 0.25
+  Acceleration: 25
+  MaxSpeed: 0.5
   MaxDistance: 2
   Target: {fileID: 7951491891831686054}
 --- !u!114 &1001295154

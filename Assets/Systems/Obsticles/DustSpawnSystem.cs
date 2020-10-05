@@ -1,4 +1,5 @@
-﻿using GameState.States;
+﻿using System;
+using GameState.States;
 using SystemBase;
 using SystemBase.StateMachineBase;
 using Systems;
@@ -16,15 +17,16 @@ namespace Assets.Systems.Obsticles
     {
         public override void Register(DustSpawnComponent component)
         {
-            SystemUpdate(component)
+            Observable.Interval(TimeSpan.FromMilliseconds(20))
                 .Where(_ => IoC.Game.GameStateContext.CurrentState.Value is Running)
-                .Subscribe(SpawnDust)
+                .Subscribe(_ => SpawnDust(component))
                 .AddTo(component);
         }
 
         private void SpawnDust(DustSpawnComponent component)
         {
             var shouldSpawn = (int)(Random.value * component.InverseDustSpawnPropability) % component.InverseDustSpawnPropability == 0;
+
             if (!shouldSpawn) return;
 
             var pos = component.transform.position;
@@ -39,9 +41,9 @@ namespace Assets.Systems.Obsticles
 
         public override void Register(StarSpawnComponent component)
         {
-            SystemUpdate(component)
+            Observable.Interval(TimeSpan.FromMilliseconds(20))
                 .Where(_ => IoC.Game.GameStateContext.CurrentState.Value is GameOver)
-                .Subscribe(SpawnDust)
+                .Subscribe(_ => SpawnDust(component))
                 .AddTo(component);
         }
     }
