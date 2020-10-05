@@ -1,9 +1,12 @@
-﻿using Assets.Systems.Tools.Actions;
+﻿using System.Net.Http.Headers;
+using Assets.Systems.Tools.Actions;
+using Assets.Systems.UI;
 using Assets.Systems.VinylMusicSystem.Events;
+using GameState.States;
 using SystemBase;
 using Systems.GameState.Messages;
-using Assets.Systems.UI;
 using UniRx;
+using Utils;
 
 namespace Assets.Systems.GameFlow
 {
@@ -21,7 +24,15 @@ namespace Assets.Systems.GameFlow
 
         private void OnPlayButtonClicked(PlayButtonClickedEvent obj)
         {
-            MessageBroker.Default.Publish(new GameMsgStart());
+            if (IoC.Game.GameStateContext.CurrentState.Value is GameOver)
+            {
+                MessageBroker.Default.Publish(new GameMsgRestart());
+            }
+            else
+            {
+                MessageBroker.Default.Publish(new GameMsgStart());
+            }
+            
             MessageBroker.Default.Publish(new SelectToolAction { ToolToSelect = CurrentTool.Broom });
         }
 

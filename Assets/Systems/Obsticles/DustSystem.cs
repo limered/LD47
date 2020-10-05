@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Assets.Utils.Math;
+using GameState.States;
+using System;
 using SystemBase;
-using Assets.Utils.Math;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using Utils;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -39,6 +41,16 @@ namespace Assets.Systems.Obsticles
                 .Subscribe(_ => StopDying(component))
                 .AddTo(component);
 
+            IoC.Game.GameStateContext.BeforeStateChange
+                .Where(nextState => nextState is Running)
+                .Subscribe(_ => RemoveDust(component))
+                .AddTo(component);
+        }
+
+        private void RemoveDust(DustComponent component)
+        {
+            component.DyingDisposable?.Dispose();
+            Object.Destroy(component.gameObject);
         }
 
         private void StopDying(DustComponent component)
@@ -80,7 +92,7 @@ namespace Assets.Systems.Obsticles
             var pos = obj.transform.position;
             var randXY = (Random.insideUnitCircle + new Vector2(pos.x, pos.y)) * 2;
             var randZ = Math.Abs(Random.value * 3) + 0.2f;
-            
+
             obj.transform.position = new Vector3(pos.x, pos.y, -randZ);
             obj.TargetLocation.Value = new Vector3(randXY.x, randXY.y, 0);
         }

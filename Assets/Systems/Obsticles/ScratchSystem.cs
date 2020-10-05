@@ -21,35 +21,17 @@ namespace Assets.Systems.Obsticles
                 .AddTo(component);
 
             component.Remove.Subscribe(_ => OnRemove(component)).AddTo(component);
-        }
 
-        private void OnRemove(ScratchComponent obj)
-        {
-            obj.StartFadeout();
-
-            Observable
-                .Timer(TimeSpan.FromMilliseconds(300))
-                .Subscribe(_ => Object.Destroy(obj.gameObject));
+            IoC.Game.GameStateContext.BeforeStateChange
+                .Where(nextState => nextState is Running)
+                .Subscribe(_ => OnRemove(component))
+                .AddTo(component);
         }
 
         public override void Register(ScratchConfigComponent component)
         {
             RegisterWaitable(component);
             _scrathConfig = component;
-
-            IoC.Game.GameStateContext.CurrentState
-                .Where(state => state is Running)
-                .Subscribe(_ => ClearAllScratches())
-                .AddTo(component);
-        }
-
-        private static void ClearAllScratches()
-        {
-            GameObject[] scratches = GameObject.FindGameObjectsWithTag("Scratch");
-            foreach (var scratch in scratches)
-            {
-                Object.Destroy(scratch);
-            }
         }
 
         public override void Register(VinylMusicComponent component)
@@ -57,6 +39,16 @@ namespace Assets.Systems.Obsticles
             WaitOn<ScratchConfigComponent>()
                 .Subscribe(_ => RegisterWaitable(component))
                 .AddTo(component);
+        }
+
+        private void OnRemove(ScratchComponent comp)
+        {
+            Observable
+                .Timer(TimeSpan.FromMilliseconds(300))
+                .Subscribe(_ => Object.Destroy(comp.gameObject))
+                .AddTo(comp);
+
+            comp.StartFadeout();
         }
 
         private void AnimateScratch(VinylMusicComponent musicComponent, ScratchComponent obj)

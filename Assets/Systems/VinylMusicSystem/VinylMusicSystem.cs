@@ -3,6 +3,7 @@ using Assets.GameState.Messages;
 using Assets.Systems.VinylMusicSystem.Events;
 using GameState.States;
 using UniRx;
+using UnityEngine;
 using Utils;
 
 namespace Assets.Systems.VinylMusicSystem
@@ -26,16 +27,7 @@ namespace Assets.Systems.VinylMusicSystem
         private void ChangeSpeed(VinylMusicComponent comp, NeedleChangeSpeedMsg msg)
         {
             var newPitch = comp.VinylMusicSource.pitch + msg.SpeedChangeAmount;
-
-            if (newPitch < 0)
-            {
-                newPitch = 0.1f;
-            }
-            else if (newPitch > 1)
-            {
-                newPitch = 1;
-            }
-
+            newPitch = Mathf.Clamp(newPitch, 0.1f, 1f);
             comp.VinylMusicSource.pitch = newPitch;
         }
 
@@ -51,6 +43,7 @@ namespace Assets.Systems.VinylMusicSystem
 
         private static void StartVinylMusic(VinylMusicComponent comp)
         {
+            comp.VinylMusicSource.time = 0;
             comp.VinylMusicSource.Play();
         }
 

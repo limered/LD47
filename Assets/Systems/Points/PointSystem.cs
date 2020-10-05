@@ -3,6 +3,7 @@ using SystemBase;
 using Assets.Systems.VinylMusicSystem;
 using GameState.States;
 using UniRx;
+using UnityEngine;
 using UnityEngine.UI;
 using Utils;
 
@@ -17,7 +18,7 @@ namespace Assets.Systems.Points
         {
             IoC.Game.GameStateContext.CurrentState
                 .Where(state => state is Running)
-                .Subscribe(_ => SetStartTime())
+                .Subscribe(_ => SetStartTime(component))
                 .AddTo(component);
 
             WaitOn<VinylMusicComponent>()
@@ -25,8 +26,9 @@ namespace Assets.Systems.Points
                 .AddTo(component);
         }
 
-        private void SetStartTime()
+        private void SetStartTime(Component component)
         {
+            component.GetComponent<Text>().text = "00:00:0";
             _startTime = DateTime.Now;
         }
 
