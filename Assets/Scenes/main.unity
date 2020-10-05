@@ -177,14 +177,14 @@ PrefabInstance:
     - target: {fileID: 3929750607808032993, guid: 85e5281d0aebe5c4396b706435d4460b, type: 3}
       propertyPath: ObjectsToHide.Array.data[0]
       value: 
-      objectReference: {fileID: 709295256}
+      objectReference: {fileID: 278565137}
     - target: {fileID: 3929750607808032999, guid: 85e5281d0aebe5c4396b706435d4460b, type: 3}
       propertyPath: m_Name
       value: Specials
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85e5281d0aebe5c4396b706435d4460b, type: 3}
---- !u!1 &709295256 stripped
+--- !u!1 &278565137 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1394704884770893544, guid: 872702670bc0f3244985b1293c58341d, type: 3}
   m_PrefabInstance: {fileID: 1526859907}
