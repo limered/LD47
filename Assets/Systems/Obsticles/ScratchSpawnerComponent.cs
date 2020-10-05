@@ -15,5 +15,6 @@ namespace Assets.Systems.Obsticles
         public ParticleSystem ScratchEffect;
         public int CurrentScratchCount;
         public int ParticleCount = 60;
+        public float SpawnDelay = 0.3f;
     }
 }
