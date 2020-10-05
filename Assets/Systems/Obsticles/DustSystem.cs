@@ -61,7 +61,7 @@ namespace Assets.Systems.Obsticles
         private void StartDying(DustComponent obj)
         {
             obj.DyingDisposable = Observable
-                .Timer(TimeSpan.FromSeconds(30))
+                .Timer(TimeSpan.FromSeconds(10))
                 .Subscribe(l => Object.Destroy(obj.gameObject));
         }
 
