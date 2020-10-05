@@ -284,6 +284,8 @@ GameObject:
   - component: {fileID: 1002368293}
   - component: {fileID: 1002368292}
   - component: {fileID: 1002368294}
+  - component: {fileID: 52510869}
+  - component: {fileID: 52510868}
   m_Layer: 5
   m_Name: LostTimeText
   m_TagString: Untagged
@@ -1168,9 +1170,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5894514150342845365, guid: 250164240bcbf034abbecc481512118d, type: 3}
   m_PrefabInstance: {fileID: 1394704885516955409}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1394704885405179921 stripped
+--- !u!1 &1394704884755206656 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 514756352, guid: 250164240bcbf034abbecc481512118d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 904625425, guid: 250164240bcbf034abbecc481512118d, type: 3}
   m_PrefabInstance: {fileID: 1394704885516955409}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1394704886787929774 stripped
