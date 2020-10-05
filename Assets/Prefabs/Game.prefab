@@ -463,7 +463,7 @@ MonoBehaviour:
     File: {fileID: 8300000, guid: dc882b8fd0ab88b438640a6337aa48a4, type: 3}
     Volume: 0.5
   - Name: hammer
-    File: {fileID: 8300000, guid: 722c563719e99e741baa79c751d8288f, type: 3}
+    File: {fileID: 8300000, guid: 1636d92f3359bca4486dbff22841f01c, type: 3}
     Volume: 1
 --- !u!114 &1841546074
 MonoBehaviour:
