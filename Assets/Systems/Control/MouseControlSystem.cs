@@ -1,9 +1,11 @@
-﻿using System;
+﻿using GameState.States;
+using System;
 using SystemBase;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Utils;
 
 namespace Assets.Systems.Control
 {
@@ -25,6 +27,11 @@ namespace Assets.Systems.Control
 
             return u =>
             {
+                if (IoC.Game.GameStateContext.CurrentState.Value is StartScreen)
+                {
+                    return;
+                }
+
                 if (Input.GetMouseButtonDown((int)MouseButton.LeftMouse))
                 {
                     component.MousePressed.Value = true;
