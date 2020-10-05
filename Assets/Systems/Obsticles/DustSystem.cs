@@ -45,6 +45,11 @@ namespace Assets.Systems.Obsticles
                 .Where(nextState => nextState is Running)
                 .Subscribe(_ => RemoveDust(component))
                 .AddTo(component);
+
+            IoC.Game.GameStateContext.BeforeStateChange
+                .Where(nextState => nextState is GameOver)
+                .Subscribe(_ => RemoveDust(component))
+                .AddTo(component);
         }
 
         private void RemoveDust(DustComponent component)
