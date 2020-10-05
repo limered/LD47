@@ -43,7 +43,7 @@ namespace Assets.Systems.Obsticles
                 .Subscribe(_ => obj.CurrentScratchCount--);
 
             Observable.Timer(TimeSpan.FromSeconds(20))
-                .Subscribe(_ => scratch.GetComponent<ScratchComponent>().StartFadeout())
+                .Subscribe(_ => scratch.GetComponent<ScratchComponent>().Remove.Execute())
                 .AddTo(scratch);
         }
     }
