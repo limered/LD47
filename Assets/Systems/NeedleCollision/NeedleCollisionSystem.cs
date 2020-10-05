@@ -34,6 +34,7 @@ namespace Assets.Systems.NeedleCollision
             var dustComponent = collider.gameObject.GetComponent<DustComponent>();
             if (dustComponent != null)
             {
+                cfg.DustHitParticles?.Play();
                 Observable.Timer(TimeSpan.FromSeconds(cfg.DustSlowLength)).Subscribe(_ => EndSlowEffect(cfg))
                     .AddTo(dustComponent);
                 dustComponent.Jump.Execute();
@@ -56,6 +57,7 @@ namespace Assets.Systems.NeedleCollision
 
         private static void EndSlowEffect(NeedleCollisionConfigComponent cfg)
         {
+            cfg.DustHitParticles?.Stop();
             MessageBroker.Default.Publish(new NeedleChangeSpeedMsg(cfg.DustSlowAmount));
         }
     }

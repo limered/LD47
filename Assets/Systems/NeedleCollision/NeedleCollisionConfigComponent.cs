@@ -1,4 +1,5 @@
 ﻿using SystemBase;
+using UnityEngine;
 
 namespace Assets.Systems.NeedleCollision
 {
@@ -7,5 +8,6 @@ namespace Assets.Systems.NeedleCollision
         public float DustSlowAmount = .02f;
         public double DustSlowLength = 1f;
         public float ScratchJumpAmount = .05f;
+        public ParticleSystem DustHitParticles;
     }
 }
