@@ -62,4 +62,10 @@ public static class Hamster
         public const string Broom = "broom_clean";
         public const string Hammer = "hammer_clean";
     }
+
+    public static class PlayBlink
+    {
+        public const string Init = "PlayButtonBlinkInit";
+        public const string Blink = "PlayButtonBlink";
+    }
 }
