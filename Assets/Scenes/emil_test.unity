@@ -316,6 +316,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1441210478}
+  - {fileID: 1089217900}
   - {fileID: 581813887}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -334,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objects:
   - {fileID: 581813886}
+  - {fileID: 1089217899}
 --- !u!1 &581813886
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +366,7 @@ Transform:
   - {fileID: 1671969563}
   - {fileID: 691357203}
   m_Father: {fileID: 428627060}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &615839504
 GameObject:
@@ -581,6 +583,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1089217899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6071969942512660878, guid: 44430435f9dd499428887687fd6d632b, type: 3}
+  m_PrefabInstance: {fileID: 6071969942626013922}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1089217900 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6071969942512660879, guid: 44430435f9dd499428887687fd6d632b, type: 3}
+  m_PrefabInstance: {fileID: 6071969942626013922}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1205967929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,6 +1169,10 @@ PrefabInstance:
     - target: {fileID: 6071969942512660878, guid: 44430435f9dd499428887687fd6d632b, type: 3}
       propertyPath: m_Name
       value: kappe_seite
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071969942512660878, guid: 44430435f9dd499428887687fd6d632b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6071969942512660879, guid: 44430435f9dd499428887687fd6d632b, type: 3}
       propertyPath: m_LocalPosition.x
