@@ -30,7 +30,7 @@ namespace Systems
         {
             //MessageBroker.Default.Publish(new GameMsgStart());
             QualitySettings.vSyncCount = 1;
-            Application.targetFrameRate = 30;
+            Application.targetFrameRate = 60;
         }
 
         public override void Init()
