@@ -200,6 +200,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4094671370555261972, guid: 872702670bc0f3244985b1293c58341d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bde5235c4042c5440853bcc0ffcbf47a, type: 3}
     - target: {fileID: 4798437895860691430, guid: 872702670bc0f3244985b1293c58341d, type: 3}
       propertyPath: m_Name
       value: Game
@@ -248,5 +252,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7430015159666303526, guid: 872702670bc0f3244985b1293c58341d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 872702670bc0f3244985b1293c58341d, type: 3}
