@@ -6,6 +6,7 @@ using UniRx.Triggers;
 using UnityEngine;
 using Assets.Utils.Math;
 using GameState.States;
+using StrongSystems.Audio;
 using UnityEngine.UIElements;
 using Utils;
 
@@ -58,6 +59,7 @@ namespace Assets.Systems.HamsterCollision
                 var dust = other.GetComponent<DustComponent>();
                 if (dust)
                 {
+                    "broom".Play();
                     MoveDustToAnotherPlace(dust);
                 }
             }

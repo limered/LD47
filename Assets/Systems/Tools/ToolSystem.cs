@@ -1,5 +1,6 @@
 ﻿using SystemBase;
 using Assets.Systems.Tools.Actions;
+using StrongSystems.Audio;
 using UniRx;
 using UnityEngine;
 
@@ -46,6 +47,11 @@ public class ToolSystem : GameSystem<ToolComponent, ToolButton>
 
     private void SelectTool(ToolComponent comp, CurrentTool tool)
     {
+        if (comp.CurrentTool != CurrentTool.None && comp.CurrentTool != tool)
+        {
+            "switch".Play();
+        }
+
         comp.CurrentTool = tool;
         if (comp.CurrentTool == CurrentTool.Broom)
         {

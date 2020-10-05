@@ -3,6 +3,7 @@ using Assets.Systems.Movement;
 using GameState.States;
 using System;
 using SystemBase;
+using StrongSystems.Audio;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -47,6 +48,7 @@ namespace Assets.Systems.Obsticles
             var scratchNr = (int)(Random.value * obj.ScratchPrefabs.Count);
 
             var scratch = Object.Instantiate(obj.ScratchPrefabs[scratchNr], position, Quaternion.identity, obj.Plate.transform);
+            "scratch".Play();
             obj.CurrentScratchCount++;
 
             scratch.gameObject.OnDestroyAsObservable()

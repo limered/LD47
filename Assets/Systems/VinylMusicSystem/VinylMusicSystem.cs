@@ -2,6 +2,7 @@
 using Assets.GameState.Messages;
 using Assets.Systems.VinylMusicSystem.Events;
 using GameState.States;
+using StrongSystems.Audio;
 using UniRx;
 using UnityEngine;
 using Utils;
@@ -59,6 +60,7 @@ namespace Assets.Systems.VinylMusicSystem
             }
 
             comp.VinylMusicSource.time = newAbsolutePosition;
+            "vinyl_record_jump".Play();
         }
     }
 }

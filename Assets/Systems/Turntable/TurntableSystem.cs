@@ -1,8 +1,8 @@
 ﻿using Assets.Systems.VinylMusicSystem;
 using GameState.States;
 using SystemBase;
-using Systems.GameState.Messages;
 using Assets.Systems.UI;
+using StrongSystems.Audio;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -11,7 +11,7 @@ using Utils;
 namespace Assets.Systems.Turntable
 {
     [GameSystem]
-    public class TurntableSystem : GameSystem<Turntable, Vinyl, Arm, VinylMusicComponent>
+    public class TurntableSystem : GameSystem<Turntable, Vinyl, Arm, VinylMusicComponent, BackgroundMusicComponent>
     {
         private bool _rotatingToStartPosition;
 
@@ -50,6 +50,11 @@ namespace Assets.Systems.Turntable
 
         private void PlayButtonPressed(Arm comp)
         {
+            if (!(IoC.Game.GameStateContext.CurrentState.Value is Running))
+            {
+                "play_button".Play();
+            }
+
             var startRotation = comp.transform.eulerAngles;
             var endRotation = startRotation;
             endRotation.z = comp.StartRotation;
@@ -108,6 +113,14 @@ namespace Assets.Systems.Turntable
             var currentRotation = component.StartRotation + absoluteDifference;
 
             component.transform.localEulerAngles = new Vector3(0, 0, currentRotation);
+        }
+
+        public override void Register(BackgroundMusicComponent component)
+        {
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is Running)
+                .Subscribe(_ => component.Source.Play())
+                .AddTo(component);
         }
     }
 }
