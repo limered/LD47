@@ -18,8 +18,6 @@ public class ToolButton : GameComponent
                 ToolToSelect = toolToSelect
             });
         OnSelectTool(toolToSelect);
-
-        MessageBroker.Default.Publish(new GameMsgEnd());
     }
 
     protected override void OverwriteStart()
