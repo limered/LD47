@@ -14,7 +14,7 @@ namespace StrongSystems.Audio
     public class AudioSystem : GameSystem<SFXComponent, BackgroundMusicComponent>
     {
         private readonly BoolReactiveProperty _musicIsMuted = new BoolReactiveProperty(false);
-        private readonly FloatReactiveProperty _musicVolume = new FloatReactiveProperty(1f);
+        private readonly FloatReactiveProperty _musicVolume = new FloatReactiveProperty(.8f);
         private readonly BoolReactiveProperty _sfxIsMuted = new BoolReactiveProperty(false);
         private readonly FloatReactiveProperty _sfxVolume = new FloatReactiveProperty(1f);
 
