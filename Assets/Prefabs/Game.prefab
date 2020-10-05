@@ -1008,6 +1008,18 @@ PrefabInstance:
       propertyPath: ButtonSprites.Array.data[1]
       value: 
       objectReference: {fileID: 21300000, guid: 45bb461ed0a420741b3246d8392e00ff, type: 3}
+    - target: {fileID: 1628030942314046806, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628030942314046806, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628030942314046806, guid: 250164240bcbf034abbecc481512118d, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5894514150342845364, guid: 250164240bcbf034abbecc481512118d, type: 3}
       propertyPath: m_Name
       value: RecordPlayer

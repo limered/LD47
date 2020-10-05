@@ -36,7 +36,7 @@ namespace Assets.Systems.Obsticles
 
             if (!shouldSpawn || obj.CurrentScratchCount >= obj.MaxScratchCount) return;
 
-            if (obj.ScratchEffect) obj.ScratchEffect.Emit(new ParticleSystem.EmitParams { }, obj.ParticleCount);
+            obj.ScratchEffect?.Play();
             "scratch".Play();
 
             Observable.Timer(TimeSpan.FromSeconds(obj.SpawnDelay)).Subscribe(__ =>
@@ -52,6 +52,7 @@ namespace Assets.Systems.Obsticles
                 var scratch = Object.Instantiate(obj.ScratchPrefabs[scratchNr], position, Quaternion.identity, obj.Plate.transform);
                 
                 obj.CurrentScratchCount++;
+                obj.ScratchEffect?.Stop();
 
                 scratch.gameObject.OnDestroyAsObservable()
                     .Subscribe(_ => obj.CurrentScratchCount--);
