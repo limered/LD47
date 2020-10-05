@@ -3,10 +3,12 @@ using SystemBase;
 using Assets.GameState.Messages;
 using Assets.Systems.HamsterCollision;
 using Assets.Systems.Obsticles;
+using GameState.States;
 using StrongSystems.Audio;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using Utils;
 
 namespace Assets.Systems.NeedleCollision
 {
@@ -27,6 +29,8 @@ namespace Assets.Systems.NeedleCollision
 
         private static void OnTriggerEnter(Collider collider, NeedleCollisionConfigComponent cfg)
         {
+            if(!(IoC.Game.GameStateContext.CurrentState.Value is Running)) return;
+
             var dustComponent = collider.gameObject.GetComponent<DustComponent>();
             if (dustComponent != null)
             {
