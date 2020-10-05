@@ -12,5 +12,8 @@ namespace Assets.Systems.HamsterCollision
         public GameObject RecordModel;
         public GameObject HamsterModel;
         public ReactiveProperty<Hamster.HamsterDirection> CurrentDirection = new ReactiveProperty<Hamster.HamsterDirection>();
+
+        public SpriteRenderer NormalSprite;
+        public SpriteRenderer RotatingSprite;
     }
 }

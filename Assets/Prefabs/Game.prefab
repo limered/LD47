@@ -60,7 +60,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &466619214
 MonoBehaviour:
@@ -1195,6 +1195,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4798437895860691432}
     m_Modifications:
+    - target: {fileID: 1467705706418740766, guid: dfdb450507d0c7a4dbec1cd7a8ee908d, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2297724495016174355, guid: dfdb450507d0c7a4dbec1cd7a8ee908d, type: 3}
       propertyPath: m_Name
       value: Music

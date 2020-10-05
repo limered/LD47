@@ -34,6 +34,26 @@ namespace Assets.Systems.HamsterCollision
                 .Where(_ => Input.GetMouseButtonDown((int)MouseButton.RightMouse))
                 .Subscribe(CheckForToolSwitch)
                 .AddTo(component);
+
+            IoC.Game.GameStateContext.CurrentState.Where(state => state is GameOver)
+                .Subscribe(state => SwitchToRotating(component))
+                .AddTo(component);
+
+            IoC.Game.GameStateContext.CurrentState.Where(state => !(state is GameOver))
+                .Subscribe(state => SwitchToNormal(component))
+                .AddTo(component);
+        }
+
+        private void SwitchToNormal(HamsterComponent component)
+        {
+            component.NormalSprite.enabled = true;
+            component.RotatingSprite.enabled = false;
+        }
+
+        private void SwitchToRotating(HamsterComponent component)
+        {
+            component.NormalSprite.enabled = false;
+            component.RotatingSprite.enabled = true;
         }
 
         private void CheckForToolSwitch(HamsterComponent obj)
@@ -45,7 +65,18 @@ namespace Assets.Systems.HamsterCollision
 
         private void ResetRotation(HamsterComponent comp, Turntable.Turntable table)
         {
-            if (!comp.IsUpright || !(IoC.Game.GameStateContext.CurrentState.Value is Running)) return;
+            if (!comp.IsUpright || !(IoC.Game.GameStateContext.CurrentState.Value is Running))
+            {
+                if (IoC.Game.GameStateContext.CurrentState.Value is GameOver)
+                {
+                    comp.transform
+                        .Rotate(comp.Axis, Time.deltaTime * table.Speed.Value, Space.Self);
+
+                    comp.RotatingSprite.transform
+                        .Rotate(comp.Axis, Time.deltaTime * table.Speed.Value * -2, Space.Self);
+                }
+                return;
+            }
             comp.transform
                 .Rotate(comp.Axis, Time.deltaTime * table.Speed.Value, Space.Self);
         }

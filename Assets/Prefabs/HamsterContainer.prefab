@@ -656,3 +656,5 @@ MonoBehaviour:
   Axis: {x: 0, y: 0, z: 1}
   RecordModel: {fileID: 0}
   HamsterModel: {fileID: 4758236050570951599}
+  NormalSprite: {fileID: 0}
+  RotatingSprite: {fileID: 0}

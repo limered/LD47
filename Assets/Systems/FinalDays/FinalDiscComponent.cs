@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using SystemBase;
 using UnityEngine;
 
-namespace Assets.Systems
+namespace Assets.Systems.FinalDays
 {
     public class FinalDiscComponent : GameComponent
     {
@@ -10,6 +11,7 @@ namespace Assets.Systems
 
         public Vector3 startSize;
         public Vector3 endSize;
+        public IDisposable ColorDisposable { get; set; }
 
         protected override void OverwriteStart()
         {
